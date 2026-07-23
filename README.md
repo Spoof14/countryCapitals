@@ -1,27 +1,34 @@
-# React + TypeScript + Vite
+# React + TypeScript + Vite language learning app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Madang (마당)** is a free Korean-first language learning app built around comprehensible input: short folklore and everyday stories in Korean, with English available on demand.
 
-Currently, two official plugins are available:
+## Learn by reading
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Read simplified Korean folklore and daily-life scenes
+- Tap a paragraph to reveal the English translation
+- Tap underlined words for meanings, romanization, and audio
+- Save words to a notebook and review them with light spacing
 
-## Expanding the ESLint configuration
+## Scripts
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+```bash
+yarn
+yarn dev
+yarn build
+yarn preview
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## GitHub Pages
+
+The app is configured for project Pages at:
+
+`https://spoof14.github.io/countryCapitals/`
+
+After merging to `main`, enable Pages once in the repo:
+
+1. **Settings → Pages**
+2. **Source:** GitHub Actions
+
+Pushes to `main` run `.github/workflows/deploy-pages.yml`, which builds with Vite `base: '/countryCapitals/'` and deploys the `dist` folder.
+
+Korean speech uses the browser's `speechSynthesis` API when a `ko-KR` voice is available.
