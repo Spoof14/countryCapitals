@@ -24,8 +24,15 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: yarn
+
+      # Switches the repo's Pages "Source" to GitHub Actions (build_type
+      # "workflow") if it is currently unset or on legacy branch deploys.
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - name: Install
         run: yarn install --frozen-lockfile
