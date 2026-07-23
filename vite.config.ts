@@ -29,7 +29,18 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,png,jpg,svg,ico}'],
+        // Story art is fetched lazily and cached on first view instead of
+        // being precached, to keep the initial install light.
+        globIgnores: ['**/story-art/**'],
         runtimeCaching: [
+          {
+            urlPattern: /\/story-art\/.*\.jpg$/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'story-art',
+              expiration: { maxEntries: 80, maxAgeSeconds: 60 * 60 * 24 * 180 },
+            },
+          },
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
             handler: 'StaleWhileRevalidate',

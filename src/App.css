@@ -254,6 +254,10 @@
 
 .story-row {
   width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  gap: 1.1rem;
+  align-items: center;
   text-align: left;
   border: 0;
   border-bottom: 1px solid var(--line);
@@ -265,6 +269,14 @@
 
 .story-row:hover {
   padding-left: 0.45rem;
+}
+
+.story-row__cover {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid var(--line);
 }
 
 .story-row__meta {
@@ -366,6 +378,15 @@
 .passage:hover,
 .passage.is-open {
   background: rgba(255, 255, 255, 0.42);
+}
+
+.passage__art {
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  margin-bottom: 0.85rem;
 }
 
 .passage__ko {
@@ -762,6 +783,15 @@
 @media (max-width: 720px) {
   .hero__content {
     margin-bottom: 8vh;
+  }
+
+  .story-row {
+    grid-template-columns: 1fr;
+  }
+
+  .story-row__cover {
+    order: -1;
+    aspect-ratio: 16 / 8;
   }
 
   .word-save {

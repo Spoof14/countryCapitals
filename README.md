@@ -5,6 +5,7 @@
 ## Learn by reading
 
 - Read simplified Korean folklore and daily-life scenes
+- Every paragraph has a folk-art style illustration, so meaning connects without English
 - Tap a paragraph to reveal the English translation
 - Tap underlined words for meanings, romanization, and audio
 - Save words to a notebook and review them with light spacing

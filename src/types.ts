@@ -10,6 +10,8 @@ export type StoryParagraph = {
   ko: string
   en: string
   words: StoryWord[]
+  /** Path (relative to the site base) of the paragraph illustration. */
+  image?: string
 }
 
 export type Story = {

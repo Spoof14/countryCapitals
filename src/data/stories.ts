@@ -1,6 +1,11 @@
 import type { Story } from '../types'
 
-export const stories: Story[] = [
+/** Stories whose illustration files use a shorter name than their id. */
+const artIdOverrides: Record<string, string> = {
+  'dokkaebi-bangmangi': 'dokkaebi',
+}
+
+const rawStories: Story[] = [
   {
     id: 'sun-and-moon',
     titleKo: '해와 달이 된 오누이',
@@ -417,5 +422,14 @@ export const stories: Story[] = [
     ],
   },
 ]
+
+// Every paragraph has an illustration named `story-art/<artId>-<n>.jpg`.
+export const stories: Story[] = rawStories.map((story) => ({
+  ...story,
+  paragraphs: story.paragraphs.map((paragraph, index) => ({
+    ...paragraph,
+    image: `story-art/${artIdOverrides[story.id] ?? story.id}-${index + 1}.jpg`,
+  })),
+}))
 
 export const getStoryById = (id: string) => stories.find((story) => story.id === id)
