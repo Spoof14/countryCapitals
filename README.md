@@ -9,9 +9,10 @@ easy stories, dual coding with per-paragraph illustrations, audio-paced reading-
 listening, spaced retrieval of vocabulary, light comprehension accountability, and
 pushed output through sentence reconstruction.
 
-- Ten stories across A1–B1: folklore, fables, and daily-life scenes, with later stories
-  deliberately reusing earlier vocabulary
-- Every paragraph has a folk-art style illustration, so meaning connects without English
+- **100 stories** across A1–B1, searchable in the library:
+  - Korean folklore (10, with full paragraph illustrations)
+  - Aesop, Andersen, Grimm, world folk tales, more Korean tales, and modern daily-life scenes
+  - Each story has a cover illustration; the original Korean set still has art on every paragraph
 - Tap a paragraph to reveal the English translation
 - Tap underlined words for meanings, romanization, and audio
 - Read-along audio: the paragraph being spoken is highlighted and the view follows
@@ -19,7 +20,7 @@ pushed output through sentence reconstruction.
 - Practice modes after reading: word matching, fill-in-the-blank, and sentence building
 - Save words to a notebook; spaced review uses expanding intervals (1 → 75 days)
 - Learn the alphabet on the Hangul page, with tap-to-hear letters
-- Filter the library by level (A1 / A2 / B1)
+- Filter the library by level (A1 / A2 / B1) or search by title
 - Track streaks, days practiced, and reviews on the Progress page
 - Export and import your progress as a JSON backup
 - Installable PWA with offline support (stories, fonts, and assets are cached)

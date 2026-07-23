@@ -28,6 +28,8 @@ export type Story = {
   level: CEFRLevel
   minutes: number
   theme: string
+  /** Cover illustration path (relative to the site base). */
+  cover?: string
   paragraphs: StoryParagraph[]
   questions: ComprehensionQuestion[]
 }

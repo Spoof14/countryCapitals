@@ -1,0 +1,1336 @@
+import type { Story } from '../../types'
+
+export const aesopStories: Story[] = [
+  {
+    id: 'ant-and-grasshopper',
+    titleKo: '개미와 메뚜기',
+    titleEn: 'The Ant and the Grasshopper',
+    summary: 'A grasshopper learns why the ant works so hard.',
+    level: 'A1',
+    minutes: 3,
+    theme: 'Aesop',
+    cover: 'story-art/ant-and-grasshopper-cover.jpg',
+    questions: [
+      {
+        question: 'What did the ant do all summer?',
+        options: ['Sang songs', 'Stored food', 'Played in the rain'],
+        answerIndex: 1,
+      },
+      {
+        question: 'What did the grasshopper do in summer?',
+        options: ['Worked in the fields', 'Sang and played', 'Helped the ant'],
+        answerIndex: 1,
+      },
+      {
+        question: 'What happened to the grasshopper in winter?',
+        options: [
+          'He had plenty of food',
+          'He was cold and hungry',
+          'He moved to a warm house',
+        ],
+        answerIndex: 1,
+      },
+    ],
+    paragraphs: [
+      {
+        ko: '여름에 개미는 매일 일했습니다. 개미는 먹을 것을 모았습니다.',
+        en: 'In summer the ant worked every day. The ant gathered food.',
+        words: [
+          { ko: '여름', en: 'summer', romanization: 'yeoreum' },
+          { ko: '개미', en: 'ant', romanization: 'gaemi' },
+          { ko: '매일', en: 'every day', romanization: 'maeil' },
+          { ko: '일하다', en: 'to work', romanization: 'ilhada' },
+          { ko: '모으다', en: 'to gather', romanization: 'moeuda' },
+        ],
+      },
+      {
+        ko: '메뚜기는 노래를 불렀습니다. 메뚜기는 춤을 추며 놀았습니다.',
+        en: 'The grasshopper sang songs. The grasshopper danced and played.',
+        words: [
+          { ko: '메뚜기', en: 'grasshopper', romanization: 'mettugi' },
+          { ko: '노래', en: 'song', romanization: 'norae' },
+          { ko: '부르다', en: 'to sing', romanization: 'bureuda' },
+          { ko: '춤', en: 'dance', romanization: 'chum' },
+          { ko: '놀다', en: 'to play', romanization: 'nolda' },
+        ],
+      },
+      {
+        ko: '메뚜기가 개미에게 말했습니다. “왜 그렇게 열심히 일하나요?”',
+        en: 'The grasshopper said to the ant, “Why do you work so hard?”',
+        words: [
+          { ko: '말하다', en: 'to speak', romanization: 'malhada' },
+          { ko: '왜', en: 'why', romanization: 'wae' },
+          { ko: '그렇게', en: 'so / like that', romanization: 'geureoge' },
+          { ko: '열심히', en: 'hard / diligently', romanization: 'yeolsimhi' },
+        ],
+      },
+      {
+        ko: '개미는 대답했습니다. “겨울에 먹을 것이 필요해요.”',
+        en: 'The ant answered, “We need food for winter.”',
+        words: [
+          { ko: '대답하다', en: 'to answer', romanization: 'daedaphada' },
+          { ko: '겨울', en: 'winter', romanization: 'gyeoul' },
+          { ko: '먹다', en: 'to eat', romanization: 'meokda' },
+          { ko: '필요하다', en: 'to need', romanization: 'piryohada' },
+        ],
+      },
+      {
+        ko: '겨울이 왔습니다. 메뚜기는 배가 고팠습니다. 개미는 따뜻한 집에서 음식을 먹었습니다.',
+        en: 'Winter came. The grasshopper was hungry. The ant ate food in a warm home.',
+        words: [
+          { ko: '오다', en: 'to come', romanization: 'oda' },
+          { ko: '배', en: 'stomach', romanization: 'bae' },
+          { ko: '고프다', en: 'to be hungry', romanization: 'gopeuda' },
+          { ko: '따뜻하다', en: 'to be warm', romanization: 'ttatteuthada' },
+          { ko: '집', en: 'house / home', romanization: 'jip' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'lion-and-mouse',
+    titleKo: '사자와 쥐',
+    titleEn: 'The Lion and the Mouse',
+    summary: 'A tiny mouse repays a lion’s kindness.',
+    level: 'A1',
+    minutes: 2,
+    theme: 'Aesop',
+    cover: 'story-art/lion-and-mouse-cover.jpg',
+    questions: [
+      {
+        question: 'How was the lion caught?',
+        options: ['In a net', 'In a trap', 'In a cage'],
+        answerIndex: 0,
+      },
+      {
+        question: 'What did the mouse do for the lion?',
+        options: ['Brought him food', 'Bit through the net', 'Called for help'],
+        answerIndex: 1,
+      },
+      {
+        question: 'What lesson does the story teach?',
+        options: [
+          'Big animals are always right',
+          'Even small friends can help',
+          'Mice are stronger than lions',
+        ],
+        answerIndex: 1,
+      },
+    ],
+    paragraphs: [
+      {
+        ko: '숲에서 사자가 잠을 자고 있었습니다. 작은 쥐가 사자 위를 지나갔습니다.',
+        en: 'In the forest a lion was sleeping. A small mouse walked across the lion.',
+        words: [
+          { ko: '숲', en: 'forest', romanization: 'sup' },
+          { ko: '사자', en: 'lion', romanization: 'saja' },
+          { ko: '잠', en: 'sleep', romanization: 'jam' },
+          { ko: '작다', en: 'to be small', romanization: 'jakda' },
+          { ko: '쥐', en: 'mouse', romanization: 'jwi' },
+        ],
+      },
+      {
+        ko: '사자가 깨어났습니다. 사자는 쥐를 잡았습니다.',
+        en: 'The lion woke up. The lion caught the mouse.',
+        words: [
+          { ko: '깨어나다', en: 'to wake up', romanization: 'kkaeeonada' },
+          { ko: '잡다', en: 'to catch', romanization: 'japda' },
+        ],
+      },
+      {
+        ko: '쥐가 말했습니다. “제발 살려 주세요. 나중에 도와드릴게요.”',
+        en: 'The mouse said, “Please spare me. I will help you later.”',
+        words: [
+          { ko: '제발', en: 'please', romanization: 'jebal' },
+          { ko: '살리다', en: 'to save / spare', romanization: 'salrida' },
+          { ko: '나중', en: 'later', romanization: 'najung' },
+          { ko: '돕다', en: 'to help', romanization: 'dopda' },
+        ],
+      },
+      {
+        ko: '사자는 쥐를 놓아 주었습니다. 며칠 뒤 사자가 그물에 걸렸습니다.',
+        en: 'The lion let the mouse go. A few days later the lion was caught in a net.',
+        words: [
+          { ko: '놓다', en: 'to release / let go', romanization: 'nota' },
+          { ko: '며칠', en: 'a few days', romanization: 'myeochil' },
+          { ko: '그물', en: 'net', romanization: 'geumul' },
+          { ko: '걸리다', en: 'to get caught', romanization: 'geollida' },
+        ],
+      },
+      {
+        ko: '쥐가 와서 그물을 갉아 먹었습니다. 사자는 자유로워졌습니다.',
+        en: 'The mouse came and gnawed through the net. The lion became free.',
+        words: [
+          { ko: '오다', en: 'to come', romanization: 'oda' },
+          { ko: '갉다', en: 'to gnaw', romanization: 'gapda' },
+          { ko: '자유', en: 'freedom', romanization: 'jayu' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'boy-who-cried-wolf',
+    titleKo: '양치기 소년',
+    titleEn: 'The Boy Who Cried Wolf',
+    summary: 'A shepherd boy learns that lies have a cost.',
+    level: 'A1',
+    minutes: 3,
+    theme: 'Aesop',
+    cover: 'story-art/boy-who-cried-wolf-cover.jpg',
+    questions: [
+      {
+        question: 'Why did the boy shout “Wolf!” the first time?',
+        options: ['A wolf was coming', 'He was bored', 'He lost a sheep'],
+        answerIndex: 1,
+      },
+      {
+        question: 'What did the villagers do the first time?',
+        options: ['They ran to help', 'They ignored him', 'They called the king'],
+        answerIndex: 0,
+      },
+      {
+        question: 'What happened when a real wolf came?',
+        options: [
+          'The villagers came quickly',
+          'No one believed the boy',
+          'The boy fought the wolf alone',
+        ],
+        answerIndex: 1,
+      },
+    ],
+    paragraphs: [
+      {
+        ko: '산에 양을 기르는 소년이 있었습니다. 소년은 하루 종일 혼자 있었습니다.',
+        en: 'A boy tended sheep on a hill. The boy was alone all day.',
+        words: [
+          { ko: '산', en: 'mountain / hill', romanization: 'san' },
+          { ko: '양', en: 'sheep', romanization: 'yang' },
+          { ko: '기르다', en: 'to raise / tend', romanization: 'gireuda' },
+          { ko: '소년', en: 'boy', romanization: 'sonyeon' },
+          { ko: '혼자', en: 'alone', romanization: 'honja' },
+        ],
+      },
+      {
+        ko: '소년은 심심했습니다. 소년이 큰 소리로 외쳤습니다. “늑대다! 늑대가 왔어요!”',
+        en: 'The boy was bored. The boy shouted loudly, “Wolf! A wolf is here!”',
+        words: [
+          { ko: '심심하다', en: 'to be bored', romanization: 'simsimhada' },
+          { ko: '큰', en: 'big / loud', romanization: 'keun' },
+          { ko: '외치다', en: 'to shout', romanization: 'oechida' },
+          { ko: '늑대', en: 'wolf', romanization: 'neukdae' },
+        ],
+      },
+      {
+        ko: '마을 사람들이 달려왔습니다. 하지만 늑대는 없었습니다. 사람들은 화가 났습니다.',
+        en: 'Villagers ran over. But there was no wolf. The people were angry.',
+        words: [
+          { ko: '마을', en: 'village', romanization: 'maeul' },
+          { ko: '사람', en: 'person / people', romanization: 'saram' },
+          { ko: '달려오다', en: 'to run over', romanization: 'dallyeooda' },
+          { ko: '없다', en: 'to not exist', romanization: 'eopda' },
+          { ko: '화', en: 'anger', romanization: 'hwa' },
+        ],
+      },
+      {
+        ko: '소년은 또 거짓말을 했습니다. 사람들은 다시 왔지만, 늑대는 없었습니다.',
+        en: 'The boy lied again. People came again, but there was no wolf.',
+        words: [
+          { ko: '또', en: 'again', romanization: 'tto' },
+          { ko: '거짓말', en: 'lie', romanization: 'geojitmal' },
+          { ko: '하다', en: 'to do', romanization: 'hada' },
+          { ko: '다시', en: 'again', romanization: 'dasi' },
+        ],
+      },
+      {
+        ko: '어느 날 진짜 늑대가 왔습니다. 소년이 소리쳤지만 아무도 오지 않았습니다.',
+        en: 'One day a real wolf came. The boy cried out, but no one came.',
+        words: [
+          { ko: '진짜', en: 'real / true', romanization: 'jinjja' },
+          { ko: '소리치다', en: 'to cry out', romanization: 'sorichida' },
+          { ko: '아무도', en: 'no one', romanization: 'amudo' },
+          { ko: '오다', en: 'to come', romanization: 'oda' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'fox-and-grapes',
+    titleKo: '여우와 포도',
+    titleEn: 'The Fox and the Grapes',
+    summary: 'A fox pretends he never wanted the grapes.',
+    level: 'A1',
+    minutes: 2,
+    theme: 'Aesop',
+    cover: 'story-art/fox-and-grapes-cover.jpg',
+    questions: [
+      {
+        question: 'What did the fox want?',
+        options: ['Apples on a tree', 'Grapes on a vine', 'Fish in a pond'],
+        answerIndex: 1,
+      },
+      {
+        question: 'Could the fox reach the grapes?',
+        options: ['Yes, easily', 'No, they were too high', 'Yes, with a ladder'],
+        answerIndex: 1,
+      },
+      {
+        question: 'What did the fox say at the end?',
+        options: [
+          'The grapes are probably sour',
+          'I will try again tomorrow',
+          'I should ask for help',
+        ],
+        answerIndex: 0,
+      },
+    ],
+    paragraphs: [
+      {
+        ko: '여우가 배가 고파서 길을 걸었습니다. 여우는 포도나무를 봤습니다.',
+        en: 'A hungry fox walked along the road. The fox saw a grapevine.',
+        words: [
+          { ko: '여우', en: 'fox', romanization: 'yeou' },
+          { ko: '배고프다', en: 'to be hungry', romanization: 'baegopeuda' },
+          { ko: '길', en: 'road', romanization: 'gil' },
+          { ko: '걷다', en: 'to walk', romanization: 'geotda' },
+          { ko: '포도나무', en: 'grapevine', romanization: 'podonamu' },
+        ],
+      },
+      {
+        ko: '나무 위에 빨간 포도가 많이 있었습니다. 포도는 아주 달아 보였습니다.',
+        en: 'Many red grapes hung on the vine. The grapes looked very sweet.',
+        words: [
+          { ko: '나무', en: 'tree / vine', romanization: 'namu' },
+          { ko: '빨갛다', en: 'to be red', romanization: 'ppalgata' },
+          { ko: '포도', en: 'grape', romanization: 'podo' },
+          { ko: '많다', en: 'to be many', romanization: 'manta' },
+          { ko: '달다', en: 'to be sweet', romanization: 'dalda' },
+        ],
+      },
+      {
+        ko: '여우는 뛰어 올랐습니다. 여우는 여러 번 시도했습니다. 하지만 포도에 닿지 못했습니다.',
+        en: 'The fox jumped up. The fox tried many times. But he could not reach the grapes.',
+        words: [
+          { ko: '뛰다', en: 'to jump', romanization: 'ttwida' },
+          { ko: '올라가다', en: 'to go up', romanization: 'ollagada' },
+          { ko: '여러', en: 'several / many', romanization: 'yeoreo' },
+          { ko: '번', en: 'time (counter)', romanization: 'beon' },
+          { ko: '닿다', en: 'to reach / touch', romanization: 'datda' },
+        ],
+      },
+      {
+        ko: '여우는 돌아서며 말했습니다. “그 포도는 아마 시큼할 거야.”',
+        en: 'The fox turned away and said, “Those grapes are probably sour.”',
+        words: [
+          { ko: '돌아서다', en: 'to turn around', romanization: 'doraseoda' },
+          { ko: '말하다', en: 'to say', romanization: 'malhada' },
+          { ko: '아마', en: 'probably', romanization: 'ama' },
+          { ko: '시큼하다', en: 'to be sour', romanization: 'sikeumhada' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'crow-and-pitcher',
+    titleKo: '까마귀와 물병',
+    titleEn: 'The Crow and the Pitcher',
+    summary: 'A clever crow raises the water in a pitcher.',
+    level: 'A1',
+    minutes: 3,
+    theme: 'Aesop',
+    cover: 'story-art/crow-and-pitcher-cover.jpg',
+    questions: [
+      {
+        question: 'Why was the crow thirsty?',
+        options: [
+          'It had flown a long way',
+          'It had eaten salty food',
+          'It was a hot day',
+        ],
+        answerIndex: 0,
+      },
+      {
+        question: 'What was inside the pitcher?',
+        options: ['A little water', 'A lot of water', 'No water at all'],
+        answerIndex: 0,
+      },
+      {
+        question: 'How did the crow drink the water?',
+        options: [
+          'By tipping the pitcher over',
+          'By dropping stones into it',
+          'By asking another bird for help',
+        ],
+        answerIndex: 1,
+      },
+    ],
+    paragraphs: [
+      {
+        ko: '까마귀가 오랫동안 날아왔습니다. 까마귀는 목이 말랐습니다.',
+        en: 'A crow had flown for a long time. The crow was thirsty.',
+        words: [
+          { ko: '까마귀', en: 'crow', romanization: 'kkamagwi' },
+          { ko: '오랫동안', en: 'for a long time', romanization: 'oraetdongan' },
+          { ko: '날다', en: 'to fly', romanization: 'nalda' },
+          { ko: '목', en: 'throat', romanization: 'mok' },
+          { ko: '마르다', en: 'to be dry / thirsty', romanization: 'mareuda' },
+        ],
+      },
+      {
+        ko: '까마귀는 물병을 찾았습니다. 병 안에 물이 조금 있었습니다.',
+        en: 'The crow found a pitcher. There was a little water inside the bottle.',
+        words: [
+          { ko: '찾다', en: 'to find', romanization: 'chatda' },
+          { ko: '물병', en: 'pitcher / bottle', romanization: 'mulbyeong' },
+          { ko: '병', en: 'bottle', romanization: 'byeong' },
+          { ko: '물', en: 'water', romanization: 'mul' },
+          { ko: '조금', en: 'a little', romanization: 'jogeum' },
+        ],
+      },
+      {
+        ko: '물은 너무 낮았습니다. 까마귀는 입으로 물에 닿지 못했습니다.',
+        en: 'The water was too low. The crow could not reach it with his beak.',
+        words: [
+          { ko: '너무', en: 'too / very', romanization: 'neomu' },
+          { ko: '낮다', en: 'to be low', romanization: 'natda' },
+          { ko: '입', en: 'mouth / beak', romanization: 'ip' },
+          { ko: '닿다', en: 'to reach', romanization: 'datda' },
+          { ko: '못하다', en: 'cannot', romanization: 'mothada' },
+        ],
+      },
+      {
+        ko: '까마귀는 생각했습니다. 까마귀는 작은 돌멩이를 하나씩 넣었습니다.',
+        en: 'The crow thought for a moment. The crow dropped small stones in one by one.',
+        words: [
+          { ko: '생각하다', en: 'to think', romanization: 'saenggakhada' },
+          { ko: '작다', en: 'small', romanization: 'jakda' },
+          { ko: '돌멩이', en: 'pebble / stone', romanization: 'dolmengi' },
+          { ko: '하나', en: 'one', romanization: 'hana' },
+          { ko: '넣다', en: 'to put in', romanization: 'neota' },
+        ],
+      },
+      {
+        ko: '물이 점점 올라왔습니다. 까마귀는 마침내 물을 마셨습니다.',
+        en: 'The water rose little by little. At last the crow drank the water.',
+        words: [
+          { ko: '점점', en: 'gradually', romanization: 'jeomjeom' },
+          { ko: '올라오다', en: 'to rise', romanization: 'ollaaoda' },
+          { ko: '마침내', en: 'at last', romanization: 'machimnae' },
+          { ko: '마시다', en: 'to drink', romanization: 'masida' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'north-wind-and-sun',
+    titleKo: '북풍과 태양',
+    titleEn: 'The North Wind and the Sun',
+    summary: 'The sun and the wind argue over who is stronger.',
+    level: 'A1',
+    minutes: 3,
+    theme: 'Aesop',
+    cover: 'story-art/north-wind-and-sun-cover.jpg',
+    questions: [
+      {
+        question: 'What did the North Wind and the Sun argue about?',
+        options: ['Who was older', 'Who was stronger', 'Who was wiser'],
+        answerIndex: 1,
+      },
+      {
+        question: 'What did the traveler wear?',
+        options: ['A heavy coat', 'A light shirt', 'A rain jacket'],
+        answerIndex: 0,
+      },
+      {
+        question: 'Who won the argument?',
+        options: ['The North Wind', 'The Sun', 'Neither of them'],
+        answerIndex: 1,
+      },
+    ],
+    paragraphs: [
+      {
+        ko: '북풍과 태양이 다투었습니다. 둘은 누가 더 강한지 말했습니다.',
+        en: 'The North Wind and the Sun argued. They talked about who was stronger.',
+        words: [
+          { ko: '북풍', en: 'north wind', romanization: 'bukpung' },
+          { ko: '태양', en: 'sun', romanization: 'taeyang' },
+          { ko: '다투다', en: 'to argue', romanization: 'datuda' },
+          { ko: '강하다', en: 'to be strong', romanization: 'ganghada' },
+        ],
+      },
+      {
+        ko: '길을 가는 나그네가 있었습니다. 나그네는 두꺼운 외투를 입었습니다.',
+        en: 'A traveler was walking on the road. The traveler wore a thick coat.',
+        words: [
+          { ko: '나그네', en: 'traveler', romanization: 'nageune' },
+          { ko: '가다', en: 'to go / walk', romanization: 'gada' },
+          { ko: '두껍다', en: 'to be thick', romanization: 'dukkeopda' },
+          { ko: '외투', en: 'coat', romanization: 'oetu' },
+          { ko: '입다', en: 'to wear', romanization: 'ipda' },
+        ],
+      },
+      {
+        ko: '북풍이 먼저 불었습니다. 바람이 세게 불었습니다. 하지만 나그네는 외투를 더 꼭 잡았습니다.',
+        en: 'The North Wind blew first. The wind blew hard. But the traveler held his coat tighter.',
+        words: [
+          { ko: '먼저', en: 'first', romanization: 'meonjeo' },
+          { ko: '불다', en: 'to blow (wind)', romanization: 'bulda' },
+          { ko: '바람', en: 'wind', romanization: 'baram' },
+          { ko: '세게', en: 'strongly', romanization: 'sege' },
+          { ko: '꼭', en: 'tightly', romanization: 'kkok' },
+        ],
+      },
+      {
+        ko: '태양이 따뜻하게 비췄습니다. 공기가 점점 따뜻해졌습니다.',
+        en: 'The sun shone warmly. The air grew warmer and warmer.',
+        words: [
+          { ko: '따뜻하다', en: 'to be warm', romanization: 'ttatteuthada' },
+          { ko: '비치다', en: 'to shine on', romanization: 'bichida' },
+          { ko: '공기', en: 'air', romanization: 'gonggi' },
+        ],
+      },
+      {
+        ko: '나그네는 더워서 외투를 벗었습니다. 북풍은 조용해졌습니다.',
+        en: 'The traveler got hot and took off his coat. The North Wind fell silent.',
+        words: [
+          { ko: '덥다', en: 'to be hot', romanization: 'deopda' },
+          { ko: '벗다', en: 'to take off', romanization: 'beotda' },
+          { ko: '조용하다', en: 'to be quiet', romanization: 'joyonghada' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'dog-and-bone',
+    titleKo: '개와 뼈',
+    titleEn: 'The Dog and the Bone',
+    summary: 'A dog loses his bone by chasing its reflection.',
+    level: 'A1',
+    minutes: 2,
+    theme: 'Aesop',
+    cover: 'story-art/dog-and-bone-cover.jpg',
+    questions: [
+      {
+        question: 'What did the dog find?',
+        options: ['A piece of meat', 'A bone', 'A fish'],
+        answerIndex: 1,
+      },
+      {
+        question: 'Where did the dog see another dog?',
+        options: ['In the water', 'In a mirror', 'Behind a tree'],
+        answerIndex: 0,
+      },
+      {
+        question: 'What happened to the dog’s bone?',
+        options: [
+          'He kept it safely',
+          'He shared it with a friend',
+          'He dropped it into the water',
+        ],
+        answerIndex: 2,
+      },
+    ],
+    paragraphs: [
+      {
+        ko: '개가 맛있는 뼈를 찾았습니다. 개는 기쁜 마음으로 집으로 갔습니다.',
+        en: 'A dog found a tasty bone. The dog walked home happily.',
+        words: [
+          { ko: '개', en: 'dog', romanization: 'gae' },
+          { ko: '맛있다', en: 'to be tasty', romanization: 'masitda' },
+          { ko: '뼈', en: 'bone', romanization: 'ppyeo' },
+          { ko: '찾다', en: 'to find', romanization: 'chatda' },
+          { ko: '기쁘다', en: 'to be happy', romanization: 'gippeuda' },
+        ],
+      },
+      {
+        ko: '개는 다리를 건넜습니다. 다리 아래에 물이 있었습니다.',
+        en: 'The dog crossed a bridge. There was water below the bridge.',
+        words: [
+          { ko: '다리', en: 'bridge', romanization: 'dari' },
+          { ko: '건너다', en: 'to cross', romanization: 'geonneoda' },
+          { ko: '아래', en: 'below', romanization: 'arae' },
+          { ko: '물', en: 'water', romanization: 'mul' },
+        ],
+      },
+      {
+        ko: '물에 개의 모습이 비쳤습니다. 개는 다른 개가 더 큰 뼈를 물고 있다고 생각했습니다.',
+        en: 'The dog’s reflection appeared in the water. The dog thought another dog held a bigger bone.',
+        words: [
+          { ko: '모습', en: 'appearance', romanization: 'moseup' },
+          { ko: '비치다', en: 'to be reflected', romanization: 'bichida' },
+          { ko: '다른', en: 'other / different', romanization: 'dareun' },
+          { ko: '크다', en: 'to be big', romanization: 'keuda' },
+          { ko: '물다', en: 'to hold in the mouth', romanization: 'mulda' },
+        ],
+      },
+      {
+        ko: '개가 으르렁거리며 뼈를 물었습니다. 뼈가 물에 빠졌습니다. 개는 아무것도 남지 않았습니다.',
+        en: 'The dog growled and snapped at the bone. The bone fell into the water. The dog had nothing left.',
+        words: [
+          { ko: '으르렁거리다', en: 'to growl', romanization: 'eureureonggeorida' },
+          { ko: '빠지다', en: 'to fall in', romanization: 'ppajida' },
+          { ko: '아무것도', en: 'nothing', romanization: 'amugeotdo' },
+          { ko: '남다', en: 'to remain', romanization: 'namda' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'goose-golden-eggs',
+    titleKo: '황금 알을 낳는 거위',
+    titleEn: 'The Goose That Laid the Golden Eggs',
+    summary: 'Greed destroys a farmer’s golden gift.',
+    level: 'A2',
+    minutes: 3,
+    theme: 'Aesop',
+    cover: 'story-art/goose-golden-eggs-cover.jpg',
+    questions: [
+      {
+        question: 'What was special about the goose?',
+        options: [
+          'It laid golden eggs',
+          'It could fly very high',
+          'It sang beautiful songs',
+        ],
+        answerIndex: 0,
+      },
+      {
+        question: 'Why did the farmer open the goose?',
+        options: [
+          'He wanted all the gold at once',
+          'The goose was sick',
+          'A neighbor told him to',
+        ],
+        answerIndex: 0,
+      },
+      {
+        question: 'What did the farmer find inside the goose?',
+        options: ['More golden eggs', 'Nothing special', 'A hidden treasure map'],
+        answerIndex: 1,
+      },
+    ],
+    paragraphs: [
+      {
+        ko: '한 농부에게 거위가 있었습니다. 거위는 매일 황금 알을 낳았습니다.',
+        en: 'A farmer had a goose. Every day the goose laid a golden egg.',
+        words: [
+          { ko: '농부', en: 'farmer', romanization: 'nongbu' },
+          { ko: '거위', en: 'goose', romanization: 'geowi' },
+          { ko: '매일', en: 'every day', romanization: 'maeil' },
+          { ko: '황금', en: 'gold', romanization: 'hwanggeum' },
+          { ko: '알', en: 'egg', romanization: 'al' },
+          { ko: '낳다', en: 'to lay (eggs)', romanization: 'nata' },
+        ],
+      },
+      {
+        ko: '농부는 알을 팔아 돈을 벌었습니다. 그래서 농부는 점점 더 부자가 되었습니다.',
+        en: 'The farmer sold the eggs and earned money. So he grew richer and richer.',
+        words: [
+          { ko: '팔다', en: 'to sell', romanization: 'palda' },
+          { ko: '돈', en: 'money', romanization: 'don' },
+          { ko: '벌다', en: 'to earn', romanization: 'beolda' },
+          { ko: '그래서', en: 'so / therefore', romanization: 'geuraeseo' },
+          { ko: '부자', en: 'rich person', romanization: 'buja' },
+        ],
+      },
+      {
+        ko: '하지만 농부는 욕심이 났습니다. 농부는 생각했습니다. “거위 안에 황금이 더 있을 거야.”',
+        en: 'But the farmer grew greedy. He thought, “There must be more gold inside the goose.”',
+        words: [
+          { ko: '하지만', en: 'but / however', romanization: 'hajiman' },
+          { ko: '욕심', en: 'greed', romanization: 'yoksim' },
+          { ko: '나다', en: 'to arise / feel', romanization: 'nada' },
+          { ko: '생각하다', en: 'to think', romanization: 'saenggakhada' },
+          { ko: '안', en: 'inside', romanization: 'an' },
+        ],
+      },
+      {
+        ko: '농부는 거위를 잡아 배를 갈랐습니다. 하지만 안에는 황금이 없었습니다.',
+        en: 'The farmer caught the goose and cut it open. But there was no gold inside.',
+        words: [
+          { ko: '잡다', en: 'to catch', romanization: 'japda' },
+          { ko: '배', en: 'belly / stomach', romanization: 'bae' },
+          { ko: '갈다', en: 'to cut open', romanization: 'galda' },
+          { ko: '없다', en: 'to not exist', romanization: 'eopda' },
+        ],
+      },
+      {
+        ko: '거위는 죽었고, 황금 알도 더 이상 나오지 않았습니다. 농부는 모든 것을 잃었습니다.',
+        en: 'The goose died, and no more golden eggs came. The farmer lost everything.',
+        words: [
+          { ko: '죽다', en: 'to die', romanization: 'jukda' },
+          { ko: '더', en: 'more', romanization: 'deo' },
+          { ko: '이상', en: 'any more / beyond', romanization: 'isang' },
+          { ko: '나오다', en: 'to come out', romanization: 'naoda' },
+          { ko: '잃다', en: 'to lose', romanization: 'ilta' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'town-mouse-country-mouse',
+    titleKo: '도시 쥐와 시골 쥐',
+    titleEn: 'The Town Mouse and the Country Mouse',
+    summary: 'Two mice learn that simple life can be safer.',
+    level: 'A2',
+    minutes: 4,
+    theme: 'Aesop',
+    cover: 'story-art/town-mouse-country-mouse-cover.jpg',
+    questions: [
+      {
+        question: 'Who visited whom first?',
+        options: [
+          'The town mouse visited the country mouse',
+          'The country mouse visited the town mouse',
+          'They met on the road',
+        ],
+        answerIndex: 0,
+      },
+      {
+        question: 'What scared the country mouse in the city?',
+        options: ['A loud dog', 'A cat', 'A cook'],
+        answerIndex: 1,
+      },
+      {
+        question: 'Where did the country mouse prefer to live?',
+        options: ['In the big city', 'In the quiet countryside', 'On a ship'],
+        answerIndex: 1,
+      },
+    ],
+    paragraphs: [
+      {
+        ko: '시골에 사는 쥐가 있었습니다. 도시에 사는 친구 쥐가 시골을 방문했습니다.',
+        en: 'A mouse lived in the countryside. His friend from the city visited the country.',
+        words: [
+          { ko: '시골', en: 'countryside', romanization: 'sigol' },
+          { ko: '사다', en: 'to live', romanization: 'sada' },
+          { ko: '도시', en: 'city', romanization: 'dosi' },
+          { ko: '친구', en: 'friend', romanization: 'chingu' },
+          { ko: '방문하다', en: 'to visit', romanization: 'bangmunhada' },
+        ],
+      },
+      {
+        ko: '시골 쥐는 겨우 먹을 것을 대접했습니다. 도시 쥐는 말했습니다. “시골 음식은 너무 심심해.”',
+        en: 'The country mouse offered simple food. The city mouse said, “Country food is too plain.”',
+        words: [
+          { ko: '겨우', en: 'barely / simply', romanization: 'gyeou' },
+          { ko: '대접하다', en: 'to treat / serve', romanization: 'daejjeophada' },
+          { ko: '음식', en: 'food', romanization: 'eumsik' },
+          { ko: '심심하다', en: 'to be plain / bland', romanization: 'simsimhada' },
+        ],
+      },
+      {
+        ko: '그래서 시골 쥐는 도시에 갔습니다. 큰 집에서 맛있는 음식이 많이 있었습니다.',
+        en: 'So the country mouse went to the city. In a big house there was plenty of delicious food.',
+        words: [
+          { ko: '그래서', en: 'so', romanization: 'geuraeseo' },
+          { ko: '가다', en: 'to go', romanization: 'gada' },
+          { ko: '집', en: 'house', romanization: 'jip' },
+          { ko: '맛있다', en: 'to be delicious', romanization: 'masitda' },
+          { ko: '많다', en: 'to be many', romanization: 'manta' },
+        ],
+      },
+      {
+        ko: '쥐들이 먹으려고 했을 때 고양이가 나타났습니다. 두 쥐는 깜짝 놀라 도망쳤습니다.',
+        en: 'Just as they were about to eat, a cat appeared. Both mice ran away in fright.',
+        words: [
+          { ko: '먹다', en: 'to eat', romanization: 'meokda' },
+          { ko: '고양이', en: 'cat', romanization: 'goyangi' },
+          { ko: '나타나다', en: 'to appear', romanization: 'natanada' },
+          { ko: '깜짝', en: 'with a start / suddenly', romanization: 'kkamjjak' },
+          { ko: '도망치다', en: 'to run away', romanization: 'domangchida' },
+        ],
+      },
+      {
+        ko: '시골 쥐는 말했습니다. “나는 조용한 시골이 더 좋아.” 도시 쥐는 혼자 남았습니다.',
+        en: 'The country mouse said, “I prefer the quiet countryside.” The city mouse stayed behind alone.',
+        words: [
+          { ko: '조용하다', en: 'to be quiet', romanization: 'joyonghada' },
+          { ko: '좋다', en: 'to like / be good', romanization: 'jota' },
+          { ko: '혼자', en: 'alone', romanization: 'honja' },
+          { ko: '남다', en: 'to remain', romanization: 'namda' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'fox-and-crow',
+    titleKo: '여우와 까마귀',
+    titleEn: 'The Fox and the Crow',
+    summary: 'A fox tricks a crow out of her cheese.',
+    level: 'A2',
+    minutes: 3,
+    theme: 'Aesop',
+    cover: 'story-art/fox-and-crow-cover.jpg',
+    questions: [
+      {
+        question: 'What was the crow holding?',
+        options: ['A piece of bread', 'A piece of cheese', 'A fish'],
+        answerIndex: 1,
+      },
+      {
+        question: 'How did the fox get the cheese?',
+        options: [
+          'He climbed the tree',
+          'He praised the crow’s singing',
+          'He traded it for a berry',
+        ],
+        answerIndex: 1,
+      },
+      {
+        question: 'What happened when the crow opened her mouth?',
+        options: [
+          'She sang beautifully',
+          'The cheese fell down',
+          'The fox ran away',
+        ],
+        answerIndex: 1,
+      },
+    ],
+    paragraphs: [
+      {
+        ko: '까마귀가 나뭇가지에 앉아 있었습니다. 까마귀는 부리에 치즈를 물고 있었습니다.',
+        en: 'A crow sat on a tree branch. The crow held a piece of cheese in her beak.',
+        words: [
+          { ko: '까마귀', en: 'crow', romanization: 'kkamagwi' },
+          { ko: '나뭇가지', en: 'tree branch', romanization: 'namutgaji' },
+          { ko: '앉다', en: 'to sit', romanization: 'anda' },
+          { ko: '부리', en: 'beak', romanization: 'buri' },
+          { ko: '치즈', en: 'cheese', romanization: 'chijeu' },
+          { ko: '물다', en: 'to hold in the mouth', romanization: 'mulda' },
+        ],
+      },
+      {
+        ko: '여우가 나무 아래를 지나갔습니다. 여우는 치즈를 보고 생각했습니다.',
+        en: 'A fox walked below the tree. The fox saw the cheese and thought.',
+        words: [
+          { ko: '여우', en: 'fox', romanization: 'yeou' },
+          { ko: '나무', en: 'tree', romanization: 'namu' },
+          { ko: '아래', en: 'below', romanization: 'arae' },
+          { ko: '지나가다', en: 'to pass by', romanization: 'jinagada' },
+          { ko: '보다', en: 'to see', romanization: 'boda' },
+        ],
+      },
+      {
+        ko: '여우가 말했습니다. “정말 아름다운 새군요! 노래도 잘 부를 것 같아요.”',
+        en: 'The fox said, “What a beautiful bird! You must sing very well too.”',
+        words: [
+          { ko: '정말', en: 'really', romanization: 'jeongmal' },
+          { ko: '아름답다', en: 'to be beautiful', romanization: 'areumdapda' },
+          { ko: '새', en: 'bird', romanization: 'sae' },
+          { ko: '노래', en: 'song', romanization: 'norae' },
+          { ko: '부르다', en: 'to sing', romanization: 'bureuda' },
+        ],
+      },
+      {
+        ko: '까마귀는 기분이 좋아서 입을 열었습니다. 치즈가 땅에 떨어졌습니다.',
+        en: 'The crow felt pleased and opened her mouth. The cheese fell to the ground.',
+        words: [
+          { ko: '기분', en: 'feeling / mood', romanization: 'gibun' },
+          { ko: '좋다', en: 'to be good / pleased', romanization: 'jota' },
+          { ko: '열다', en: 'to open', romanization: 'yeolda' },
+          { ko: '땅', en: 'ground', romanization: 'ttang' },
+          { ko: '떨어지다', en: 'to fall', romanization: 'tteoreojida' },
+        ],
+      },
+      {
+        ko: '여우는 치즈를 집어 먹고 말했습니다. “칭찬을 조심하세요.”',
+        en: 'The fox picked up the cheese and said, “Be careful of flattery.”',
+        words: [
+          { ko: '집다', en: 'to pick up', romanization: 'jipda' },
+          { ko: '먹다', en: 'to eat', romanization: 'meokda' },
+          { ko: '칭찬', en: 'praise / compliment', romanization: 'chingchan' },
+          { ko: '조심하다', en: 'to be careful', romanization: 'josimhada' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'wolf-in-sheeps-clothing',
+    titleKo: '가죽 옷을 입은 늑대',
+    titleEn: 'The Wolf in Sheep\'s Clothing',
+    summary: 'A wolf disguises himself but cannot hide his nature.',
+    level: 'A2',
+    minutes: 3,
+    theme: 'Aesop',
+    cover: 'story-art/wolf-in-sheeps-clothing-cover.jpg',
+    questions: [
+      {
+        question: 'What did the wolf wear?',
+        options: ['A shepherd’s coat', 'A sheep’s skin', 'A farmer’s hat'],
+        answerIndex: 1,
+      },
+      {
+        question: 'Why did the wolf dress up?',
+        options: [
+          'To stay warm in winter',
+          'To get close to the sheep',
+          'To play a joke on the shepherd',
+        ],
+        answerIndex: 1,
+      },
+      {
+        question: 'How was the wolf discovered?',
+        options: [
+          'The sheep told the shepherd',
+          'The shepherd saw through the disguise at night',
+          'The wolf’s tail showed under the skin',
+        ],
+        answerIndex: 1,
+      },
+    ],
+    paragraphs: [
+      {
+        ko: '늑대는 양 떼 근처를 맴돌았습니다. 늑대는 양을 잡고 싶었지만 가까이 갈 수 없었습니다.',
+        en: 'A wolf wandered near a flock of sheep. He wanted to catch a sheep but could not get close.',
+        words: [
+          { ko: '늑대', en: 'wolf', romanization: 'neukdae' },
+          { ko: '양', en: 'sheep', romanization: 'yang' },
+          { ko: '떼', en: 'flock / herd', romanization: 'tte' },
+          { ko: '맴돌다', en: 'to wander around', romanization: 'maemdolda' },
+          { ko: '가깝다', en: 'to be close', romanization: 'gakkapda' },
+        ],
+      },
+      {
+        ko: '늑대는 생각했습니다. “양 가죽을 입으면 양처럼 보일 거야.”',
+        en: 'The wolf thought, “If I wear sheepskin I will look like a sheep.”',
+        words: [
+          { ko: '생각하다', en: 'to think', romanization: 'saenggakhada' },
+          { ko: '가죽', en: 'hide / leather', romanization: 'gajuk' },
+          { ko: '입다', en: 'to wear', romanization: 'ipda' },
+          { ko: '보이다', en: 'to look / appear', romanization: 'boida' },
+        ],
+      },
+      {
+        ko: '늑대는 양 가죽을 입고 떼 안으로 들어갔습니다. 양들은 늑대를 친구라고 생각했습니다.',
+        en: 'The wolf put on the sheepskin and entered the flock. The sheep thought he was a friend.',
+        words: [
+          { ko: '들어가다', en: 'to enter', romanization: 'deureogada' },
+          { ko: '안', en: 'inside', romanization: 'an' },
+          { ko: '친구', en: 'friend', romanization: 'chingu' },
+        ],
+      },
+      {
+        ko: '밤이 되자 목동이 왔습니다. 목동은 어두운 밤에 늑대를 양으로 착각했습니다.',
+        en: 'When night came the shepherd arrived. In the dark he mistook the wolf for a sheep.',
+        words: [
+          { ko: '밤', en: 'night', romanization: 'bam' },
+          { ko: '목동', en: 'shepherd', romanization: 'mokdong' },
+          { ko: '어둡다', en: 'to be dark', romanization: 'eodupda' },
+          { ko: '착각하다', en: 'to mistake', romanization: 'chakgakhada' },
+        ],
+      },
+      {
+        ko: '목동이 늑대를 잡자, 가죽이 벗겨졌습니다. 늑대는 도망갔지만 다시는 그렇게 하지 않았습니다.',
+        en: 'When the shepherd caught the wolf, the skin came off. The wolf ran away and never tried again.',
+        words: [
+          { ko: '잡다', en: 'to catch', romanization: 'japda' },
+          { ko: '벗기다', en: 'to remove / strip off', romanization: 'beotgida' },
+          { ko: '도망가다', en: 'to run away', romanization: 'domanggada' },
+          { ko: '다시', en: 'again', romanization: 'dasi' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'milkmaid-and-pail',
+    titleKo: '우유통을 든 소녀',
+    titleEn: 'The Milkmaid and Her Pail',
+    summary: 'A milkmaid dreams too far ahead and spills her milk.',
+    level: 'A2',
+    minutes: 4,
+    theme: 'Aesop',
+    cover: 'story-art/milkmaid-and-pail-cover.jpg',
+    questions: [
+      {
+        question: 'What was the girl carrying on her head?',
+        options: ['A basket of fruit', 'A pail of milk', 'A bundle of cloth'],
+        answerIndex: 1,
+      },
+      {
+        question: 'What did she plan to buy with the milk money?',
+        options: ['A dress and ribbons', 'A chicken and eggs', 'A new house'],
+        answerIndex: 1,
+      },
+      {
+        question: 'What happened in the end?',
+        options: [
+          'She sold the milk for a good price',
+          'She spilled the milk while dreaming',
+          'She gave the milk to a friend',
+        ],
+        answerIndex: 1,
+      },
+    ],
+    paragraphs: [
+      {
+        ko: '소녀가 머리에 우유통을 올리고 시장으로 갔습니다. 우유를 팔면 돈을 받을 것입니다.',
+        en: 'A girl carried a milk pail on her head and walked to the market. She would get money by selling the milk.',
+        words: [
+          { ko: '소녀', en: 'girl', romanization: 'sonyeo' },
+          { ko: '머리', en: 'head', romanization: 'meori' },
+          { ko: '우유통', en: 'milk pail', romanization: 'uyutong' },
+          { ko: '시장', en: 'market', romanization: 'sijang' },
+          { ko: '팔다', en: 'to sell', romanization: 'palda' },
+        ],
+      },
+      {
+        ko: '소녀는 생각했습니다. “돈으로 닭을 사면 알을 낳을 거야.”',
+        en: 'The girl thought, “If I buy a chicken with the money, it will lay eggs.”',
+        words: [
+          { ko: '생각하다', en: 'to think', romanization: 'saenggakhada' },
+          { ko: '돈', en: 'money', romanization: 'don' },
+          { ko: '닭', en: 'chicken', romanization: 'dak' },
+          { ko: '사다', en: 'to buy', romanization: 'sada' },
+          { ko: '알', en: 'egg', romanization: 'al' },
+        ],
+      },
+      {
+        ko: '소녀는 계속 꿈을 꾸었습니다. “알을 팔아 돼지를 사고, 돼지를 팔아 소를 살 거야.”',
+        en: 'She kept dreaming. “I will sell the eggs, buy a pig, and sell the pig to buy a cow.”',
+        words: [
+          { ko: '계속', en: 'continuously', romanization: 'gyesok' },
+          { ko: '꿈', en: 'dream', romanization: 'kkum' },
+          { ko: '꾸다', en: 'to dream', romanization: 'kkuda' },
+          { ko: '돼지', en: 'pig', romanization: 'dwaeji' },
+          { ko: '소', en: 'cow', romanization: 'so' },
+        ],
+      },
+      {
+        ko: '소녀는 더 큰 꿈을 꾸었습니다. “그러면 부자가 되어 예쁜 옷을 살 거야.”',
+        en: 'She dreamed even bigger. “Then I will become rich and buy pretty clothes.”',
+        words: [
+          { ko: '크다', en: 'to be big', romanization: 'keuda' },
+          { ko: '그러면', en: 'then / in that case', romanization: 'geureomyeon' },
+          { ko: '부자', en: 'rich person', romanization: 'buja' },
+          { ko: '되다', en: 'to become', romanization: 'doeda' },
+          { ko: '예쁘다', en: 'to be pretty', romanization: 'yeppeuda' },
+        ],
+      },
+      {
+        ko: '소녀가 기뻐서 발을 꼬았습니다. 우유통이 떨어져 우유가 쏟아졌습니다. 꿈도 함께 사라졌습니다.',
+        en: 'The girl tripped happily and the pail fell. The milk spilled out. Her dreams vanished too.',
+        words: [
+          { ko: '기쁘다', en: 'to be happy', romanization: 'gippeuda' },
+          { ko: '발', en: 'foot', romanization: 'bal' },
+          { ko: '꼬이다', en: 'to trip / get tangled', romanization: 'kkoida' },
+          { ko: '떨어지다', en: 'to fall', romanization: 'tteoreojida' },
+          { ko: '쏟다', en: 'to spill', romanization: 'ssotda' },
+          { ko: '사라지다', en: 'to disappear', romanization: 'sarajida' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'oak-and-reeds',
+    titleKo: '참나무와 갈대',
+    titleEn: 'The Oak and the Reeds',
+    summary: 'A proud oak learns humility from bending reeds.',
+    level: 'B1',
+    minutes: 5,
+    theme: 'Aesop',
+    cover: 'story-art/oak-and-reeds-cover.jpg',
+    questions: [
+      {
+        question: 'What did the oak think of the reeds?',
+        options: [
+          'They were weak and foolish',
+          'They were stronger than oak trees',
+          'They were more beautiful',
+        ],
+        answerIndex: 0,
+      },
+      {
+        question: 'What happened during the storm?',
+        options: [
+          'The oak bent but survived',
+          'The oak broke while the reeds bent',
+          'Both the oak and reeds were uprooted',
+        ],
+        answerIndex: 1,
+      },
+      {
+        question: 'What lesson does the story teach?',
+        options: [
+          'Strength always wins',
+          'Sometimes flexibility is wiser than rigidity',
+          'Trees should grow near water',
+        ],
+        answerIndex: 1,
+      },
+    ],
+    paragraphs: [
+      {
+        ko: '강가에 키 큰 참나무가 서 있었습니다. 바람이 불 때마다 참나무는 옆의 갈대를 비웃었습니다.',
+        en: 'A tall oak stood by a river. Whenever the wind blew, the oak laughed at the reeds beside it.',
+        words: [
+          { ko: '강가', en: 'riverside', romanization: 'gangga' },
+          { ko: '참나무', en: 'oak tree', romanization: 'chamnamu' },
+          { ko: '서다', en: 'to stand', romanization: 'seoda' },
+          { ko: '바람', en: 'wind', romanization: 'baram' },
+          { ko: '갈대', en: 'reed', romanization: 'galdae' },
+          { ko: '비웃다', en: 'to mock / laugh at', romanization: 'biutda' },
+        ],
+      },
+      {
+        ko: '참나무가 말했습니다. “나는 단단해서 바람에 흔들리지 않아. 너희는 너무 약해.”',
+        en: 'The oak said, “I am strong and do not sway in the wind. You are too weak.”',
+        words: [
+          { ko: '단단하다', en: 'to be firm / solid', romanization: 'dandanhada' },
+          { ko: '흔들리다', en: 'to sway / shake', romanization: 'heundeullida' },
+          { ko: '약하다', en: 'to be weak', romanization: 'yakhada' },
+        ],
+      },
+      {
+        ko: '갈대는 대답했습니다. “우리는 휘어지지만 부러지지 않아요. 언젠가 그 차이를 알게 될 거예요.”',
+        en: 'The reeds answered, “We bend but do not break. One day you will understand the difference.”',
+        words: [
+          { ko: '대답하다', en: 'to answer', romanization: 'daedaphada' },
+          { ko: '휘어지다', en: 'to bend', romanization: 'hwieojida' },
+          { ko: '부러지다', en: 'to break', romanization: 'bureojida' },
+          { ko: '언젠가', en: 'someday', romanization: 'eonjenga' },
+          { ko: '차이', en: 'difference', romanization: 'chai' },
+        ],
+      },
+      {
+        ko: '어느 날 폭풍이 몰아쳤습니다. 강한 바람이 숲 전체를 휘몰아쳤고, 비가 세차게 내렸습니다.',
+        en: 'One day a storm swept in. Strong winds battered the whole forest, and rain poured down hard.',
+        words: [
+          { ko: '폭풍', en: 'storm', romanization: 'pokpung' },
+          { ko: '몰아치다', en: 'to sweep / rage', romanization: 'morachida' },
+          { ko: '숲', en: 'forest', romanization: 'sup' },
+          { ko: '비', en: 'rain', romanization: 'bi' },
+          { ko: '세차게', en: 'fiercely / heavily', romanization: 'sechage' },
+        ],
+      },
+      {
+        ko: '갈대는 바람 따라 낮게 숙였습니다. 참나무는 꼿꼿이 서 있다가 뿌리째 부러져 강에 떠내려갔습니다.',
+        en: 'The reeds bowed low with the wind. The oak stood stiff and snapped at the roots, floating down the river.',
+        words: [
+          { ko: '따라', en: 'along with / following', romanization: 'ttara' },
+          { ko: '낮게', en: 'low', romanization: 'natge' },
+          { ko: '숙이다', en: 'to bow / bend down', romanization: 'sugida' },
+          { ko: '꼿꼿이', en: 'stiffly / upright', romanization: 'kkotkkoti' },
+          { ko: '뿌리', en: 'root', romanization: 'ppuri' },
+          { ko: '떠내려가다', en: 'to float away downstream', romanization: 'tteonaeryeogada' },
+        ],
+      },
+      {
+        ko: '폭풍이 지나간 뒤, 갈대만 다시 일어섰습니다. 유연함이 때로는 강함보다 낫다는 것을 숲은 오래 기억했습니다.',
+        en: 'After the storm passed, only the reeds stood up again. The forest remembered for a long time that flexibility is sometimes wiser than strength.',
+        words: [
+          { ko: '지나가다', en: 'to pass', romanization: 'jinagada' },
+          { ko: '뒤', en: 'after / behind', romanization: 'dwi' },
+          { ko: '일어서다', en: 'to stand up', romanization: 'ireoseoda' },
+          { ko: '유연함', en: 'flexibility', romanization: 'yuyeonham' },
+          { ko: '강함', en: 'strength', romanization: 'gangham' },
+          { ko: '기억하다', en: 'to remember', romanization: 'gieokhada' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'belling-the-cat',
+    titleKo: '고양이에게 방울 달기',
+    titleEn: 'Belling the Cat',
+    summary: 'Mice agree on a plan that no one will carry out.',
+    level: 'B1',
+    minutes: 4,
+    theme: 'Aesop',
+    cover: 'story-art/belling-the-cat-cover.jpg',
+    questions: [
+      {
+        question: 'Why were the mice afraid?',
+        options: [
+          'A farmer set traps',
+          'A cat hunted them every night',
+          'Their food ran out',
+        ],
+        answerIndex: 1,
+      },
+      {
+        question: 'What plan did the mice agree on?',
+        options: [
+          'To leave the house',
+          'To put a bell on the cat',
+          'To feed the cat so it would sleep',
+        ],
+        answerIndex: 1,
+      },
+      {
+        question: 'Who volunteered to bell the cat?',
+        options: ['The oldest mouse', 'The youngest mouse', 'No one'],
+        answerIndex: 2,
+      },
+    ],
+    paragraphs: [
+      {
+        ko: '집 안에 사는 쥐들은 매일 밤 고양이 때문에 불안했습니다. 고양이가 조용히 다가오면 쥐들은 거의 들키곤 했습니다.',
+        en: 'The mice living in the house were uneasy every night because of the cat. When the cat crept up quietly, the mice were almost always caught.',
+        words: [
+          { ko: '집', en: 'house', romanization: 'jip' },
+          { ko: '쥐', en: 'mouse', romanization: 'jwi' },
+          { ko: '매일', en: 'every day', romanization: 'maeil' },
+          { ko: '고양이', en: 'cat', romanization: 'goyangi' },
+          { ko: '불안하다', en: 'to be uneasy / anxious', romanization: 'buranhada' },
+          { ko: '조용히', en: 'quietly', romanization: 'joyonghi' },
+        ],
+      },
+      {
+        ko: '어느 날 밤, 쥐들이 모여 회의를 열었습니다. 한 마리가 말했습니다. “고양이 목에 방울을 달면 어떨까요?”',
+        en: 'One night the mice gathered for a meeting. One said, “What if we put a bell around the cat’s neck?”',
+        words: [
+          { ko: '모이다', en: 'to gather', romanization: 'moida' },
+          { ko: '회의', en: 'meeting', romanization: 'hoeui' },
+          { ko: '열다', en: 'to hold / open', romanization: 'yeolda' },
+          { ko: '목', en: 'neck', romanization: 'mok' },
+          { ko: '방울', en: 'bell', romanization: 'bangul' },
+          { ko: '달다', en: 'to attach / hang', romanization: 'dalda' },
+        ],
+      },
+      {
+        ko: '다른 쥐들도 동의했습니다. 방울 소리가 나면 고양이가 오는지 미리 알 수 있을 것입니다.',
+        en: 'The other mice agreed too. If the bell rang, they could tell in advance when the cat was coming.',
+        words: [
+          { ko: '다른', en: 'other', romanization: 'dareun' },
+          { ko: '동의하다', en: 'to agree', romanization: 'donguihada' },
+          { ko: '소리', en: 'sound', romanization: 'sori' },
+          { ko: '나다', en: 'to come out / ring', romanization: 'nada' },
+          { ko: '미리', en: 'in advance / beforehand', romanization: 'miri' },
+          { ko: '알다', en: 'to know', romanization: 'alda' },
+        ],
+      },
+      {
+        ko: '모두가 좋은 생각이라고 말했습니다. 그러자 한 어른 쥐가 조용히 물었습니다. “그럼 누가 고양이에게 방울을 달겠습니까?”',
+        en: 'Everyone said it was a good idea. Then an older mouse asked quietly, “Then who will put the bell on the cat?”',
+        words: [
+          { ko: '모두', en: 'everyone', romanization: 'modu' },
+          { ko: '좋다', en: 'to be good', romanization: 'jota' },
+          { ko: '생각', en: 'idea / thought', romanization: 'saenggak' },
+          { ko: '어른', en: 'adult / elder', romanization: 'eoreun' },
+          { ko: '물다', en: 'to ask', romanization: 'mulda' },
+        ],
+      },
+      {
+        ko: '방 안이 갑자기 조용해졌습니다. 아무도 손을 들지 않았습니다. 결국 계획은 말로만 끝났습니다.',
+        en: 'The room suddenly fell silent. No one raised a hand. In the end the plan remained nothing but words.',
+        words: [
+          { ko: '방', en: 'room', romanization: 'bang' },
+          { ko: '갑자기', en: 'suddenly', romanization: 'gapjagi' },
+          { ko: '조용해지다', en: 'to become quiet', romanization: 'joyonghaejida' },
+          { ko: '아무도', en: 'no one', romanization: 'amudo' },
+          { ko: '손', en: 'hand', romanization: 'son' },
+          { ko: '결국', en: 'in the end', romanization: 'gyeolguk' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'travelers-and-bear',
+    titleKo: '나그네와 곰',
+    titleEn: 'The Travelers and the Bear',
+    summary: 'Two friends discover who is truly loyal in danger.',
+    level: 'B1',
+    minutes: 5,
+    theme: 'Aesop',
+    cover: 'story-art/travelers-and-bear-cover.jpg',
+    questions: [
+      {
+        question: 'Where were the two friends walking?',
+        options: ['Through a forest', 'Along a beach', 'Across a desert'],
+        answerIndex: 0,
+      },
+      {
+        question: 'What did one friend do when the bear appeared?',
+        options: [
+          'He climbed a tree',
+          'He stood still and talked to the bear',
+          'He ran to get help',
+        ],
+        answerIndex: 0,
+      },
+      {
+        question: 'What did the bear say about true friends?',
+        options: [
+          'They share food',
+          'They stay in danger together',
+          'They do not abandon you in trouble',
+        ],
+        answerIndex: 2,
+      },
+    ],
+    paragraphs: [
+      {
+        ko: '두 친구가 숲길을 걸으며 이야기를 나누고 있었습니다. 그들은 오래도록 함께 여행해 온 사이였습니다.',
+        en: 'Two friends walked along a forest path, talking together. They had traveled together for a long time.',
+        words: [
+          { ko: '친구', en: 'friend', romanization: 'chingu' },
+          { ko: '숲길', en: 'forest path', romanization: 'supgil' },
+          { ko: '걷다', en: 'to walk', romanization: 'geotda' },
+          { ko: '이야기', en: 'story / conversation', romanization: 'iyagi' },
+          { ko: '나누다', en: 'to share', romanization: 'nanuda' },
+          { ko: '여행', en: 'trip / travel', romanization: 'yeohaeng' },
+        ],
+      },
+      {
+        ko: '갑자기 큰 곰이 나타났습니다. 한 친구는 재빨리 가까운 나무 위로 올라갔습니다.',
+        en: 'Suddenly a large bear appeared. One friend quickly climbed up a nearby tree.',
+        words: [
+          { ko: '갑자기', en: 'suddenly', romanization: 'gapjagi' },
+          { ko: '곰', en: 'bear', romanization: 'gom' },
+          { ko: '나타나다', en: 'to appear', romanization: 'natanada' },
+          { ko: '재빨리', en: 'quickly', romanization: 'jaeppalli' },
+          { ko: '나무', en: 'tree', romanization: 'namu' },
+          { ko: '올라가다', en: 'to climb up', romanization: 'ollagada' },
+        ],
+      },
+      {
+        ko: '다른 친구는 나무에 오를 줄 몰랐습니다. 그래서 땅에 엎드려 숨을 죽이고 있었습니다.',
+        en: 'The other friend did not know how to climb a tree. So he lay flat on the ground and held his breath.',
+        words: [
+          { ko: '다른', en: 'other', romanization: 'dareun' },
+          { ko: '오르다', en: 'to climb', romanization: 'oreuda' },
+          { ko: '못하다', en: 'cannot', romanization: 'mothada' },
+          { ko: '그래서', en: 'so', romanization: 'geuraeseo' },
+          { ko: '엎드리다', en: 'to lie face down', romanization: 'eopdeurida' },
+          { ko: '숨', en: 'breath', romanization: 'sum' },
+        ],
+      },
+      {
+        ko: '곰은 죽은 것처럼 보이는 사람에게 관심이 없었습니다. 곰은 코를 대고 냄새를 맡은 뒤 천천히 걸어갔습니다.',
+        en: 'The bear had no interest in someone who looked dead. It sniffed him and then walked away slowly.',
+        words: [
+          { ko: '죽다', en: 'to die', romanization: 'jukda' },
+          { ko: '것', en: 'thing', romanization: 'geot' },
+          { ko: '관심', en: 'interest', romanization: 'gwansim' },
+          { ko: '코', en: 'nose', romanization: 'ko' },
+          { ko: '냄새', en: 'smell', romanization: 'naemsae' },
+          { ko: '맡다', en: 'to smell', romanization: 'matda' },
+        ],
+      },
+      {
+        ko: '나무 위의 친구가 내려와 물었습니다. “곰이 귀에 뭐라고 했어?” 아래 친구가 대답했습니다. “위험할 때 친구를 버리는 사람은 진짜 친구가 아니라고.”',
+        en: 'The friend in the tree came down and asked, “What did the bear whisper in your ear?” The friend below answered, “That someone who abandons a friend in danger is not a true friend.”',
+        words: [
+          { ko: '내려오다', en: 'to come down', romanization: 'naeryeooda' },
+          { ko: '물다', en: 'to ask', romanization: 'mulda' },
+          { ko: '귀', en: 'ear', romanization: 'gwi' },
+          { ko: '대답하다', en: 'to answer', romanization: 'daedaphada' },
+          { ko: '위험', en: 'danger', romanization: 'wiheom' },
+          { ko: '버리다', en: 'to abandon', romanization: 'beorida' },
+        ],
+      },
+      {
+        ko: '두 사람은 더 이상 말이 없었습니다. 그날 이후로 그들은 각자 길을 갔습니다.',
+        en: 'Neither of them had anything more to say. After that day they each went their own way.',
+        words: [
+          { ko: '더', en: 'any more', romanization: 'deo' },
+          { ko: '이상', en: 'beyond / anymore', romanization: 'isang' },
+          { ko: '말', en: 'words', romanization: 'mal' },
+          { ko: '이후', en: 'after / since then', romanization: 'ihu' },
+          { ko: '각자', en: 'each / separately', romanization: 'gakja' },
+          { ko: '길', en: 'way / path', romanization: 'gil' },
+        ],
+      },
+    ],
+  },
+]
