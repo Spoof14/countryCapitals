@@ -10,6 +10,8 @@ export type StoryParagraph = {
   ko: string
   en: string
   words: StoryWord[]
+  /** Path (relative to the site base) of the paragraph illustration. */
+  image?: string
 }
 
 export type Story = {
@@ -35,9 +37,24 @@ export type ProgressState = {
   lastReadStoryId: string | null
 }
 
+export type ActivityState = {
+  /** Local dates (YYYY-MM-DD) on which the learner read or reviewed. */
+  days: string[]
+  reviewsDone: number
+}
+
+export type ExportedData = {
+  version: 1
+  exportedAt: number
+  progress: ProgressState
+  words: SavedWord[]
+  activity: ActivityState
+}
+
 export type AppView =
   | { name: 'home' }
   | { name: 'library' }
   | { name: 'story'; storyId: string }
   | { name: 'words' }
   | { name: 'review' }
+  | { name: 'progress' }

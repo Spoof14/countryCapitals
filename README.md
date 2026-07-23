@@ -5,9 +5,14 @@
 ## Learn by reading
 
 - Read simplified Korean folklore and daily-life scenes
+- Every paragraph has a folk-art style illustration, so meaning connects without English
 - Tap a paragraph to reveal the English translation
 - Tap underlined words for meanings, romanization, and audio
 - Save words to a notebook and review them with light spacing
+- Practice story vocabulary with a matching game after reading
+- Track streaks, days practiced, and reviews on the Progress page
+- Export and import your progress as a JSON backup
+- Installable PWA with offline support (stories, fonts, and assets are cached)
 
 ## Scripts
 

@@ -26,15 +26,26 @@ export default function StoryLibrary({ stories, progress, onOpen }: StoryLibrary
           return (
             <li key={story.id}>
               <button type="button" className="story-row" onClick={() => onOpen(story.id)}>
-                <div className="story-row__meta">
-                  <span className="story-row__theme">{story.theme}</span>
-                  <span className="story-row__level">{levelLabel[story.level]}</span>
-                  <span className="story-row__time">{story.minutes} min</span>
-                  {done ? <span className="story-row__done">Read</span> : null}
+                <div className="story-row__body">
+                  <div className="story-row__meta">
+                    <span className="story-row__theme">{story.theme}</span>
+                    <span className="story-row__level">{levelLabel[story.level]}</span>
+                    <span className="story-row__time">{story.minutes} min</span>
+                    {done ? <span className="story-row__done">Read</span> : null}
+                  </div>
+                  <h3 className="story-row__title-ko">{story.titleKo}</h3>
+                  <p className="story-row__title-en">{story.titleEn}</p>
+                  <p className="story-row__summary">{story.summary}</p>
                 </div>
-                <h3 className="story-row__title-ko">{story.titleKo}</h3>
-                <p className="story-row__title-en">{story.titleEn}</p>
-                <p className="story-row__summary">{story.summary}</p>
+                {story.paragraphs[0]?.image ? (
+                  <img
+                    className="story-row__cover"
+                    src={`${import.meta.env.BASE_URL}${story.paragraphs[0].image}`}
+                    alt=""
+                    aria-hidden="true"
+                    loading="lazy"
+                  />
+                ) : null}
               </button>
             </li>
           )

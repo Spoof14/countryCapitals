@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Landing from './components/Landing'
+import ProgressPanel from './components/ProgressPanel'
 import Shell from './components/Shell'
 import StoryLibrary from './components/StoryLibrary'
 import StoryReader from './components/StoryReader'
@@ -13,7 +14,9 @@ import './App.css'
 function App() {
   const [view, setView] = useState<AppView>({ name: 'home' })
   const {
+    now,
     progress,
+    activity,
     words,
     dueWords,
     markStoryCompleted,
@@ -21,6 +24,8 @@ function App() {
     saveWord,
     removeWord,
     reviewWord,
+    exportData,
+    importData,
   } = useLearnerState()
 
   const savedWordKeys = new Set(words.map((word) => word.ko))
@@ -83,6 +88,19 @@ function App() {
           dueWords={dueWords}
           onGrade={reviewWord}
           onDone={() => setView({ name: 'words' })}
+        />
+      ) : null}
+
+      {view.name === 'progress' ? (
+        <ProgressPanel
+          now={now}
+          progress={progress}
+          activity={activity}
+          words={words}
+          dueCount={dueWords.length}
+          storyCount={stories.length}
+          onExport={exportData}
+          onImport={importData}
         />
       ) : null}
     </Shell>

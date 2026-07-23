@@ -34,6 +34,13 @@ export default function Shell({ view, dueCount, onNavigate, children }: ShellPro
             >
               Words{dueCount > 0 ? ` (${dueCount})` : ''}
             </button>
+            <button
+              type="button"
+              className={view.name === 'progress' ? 'is-active' : ''}
+              onClick={() => onNavigate({ name: 'progress' })}
+            >
+              Progress
+            </button>
           </nav>
         </header>
       ) : null}
