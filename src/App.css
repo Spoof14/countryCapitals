@@ -740,6 +740,178 @@
   color: var(--celadon-deep);
 }
 
+.passage__row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.passage__row .passage__ko {
+  flex: 1;
+}
+
+.passage__listen {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  margin-top: 0.45rem;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--celadon-deep);
+  transition: background 150ms ease, border-color 150ms ease;
+}
+
+.passage__listen:hover {
+  background: rgba(79, 138, 116, 0.16);
+  border-color: var(--celadon);
+}
+
+.practice-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-bottom: 1rem;
+}
+
+.cloze__hint {
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
+
+.cloze__sentence {
+  margin-top: 0.6rem;
+  font-family: var(--font-ko);
+  font-size: 1.25rem;
+  line-height: 1.8;
+}
+
+.cloze__translation {
+  margin-top: 0.4rem;
+  color: var(--ink-soft);
+}
+
+.cloze__choices {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.55rem;
+  margin-top: 1rem;
+}
+
+.cloze__choice {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  padding: 0.8rem 0.6rem;
+  font-family: var(--font-ko);
+  font-size: 1.05rem;
+  transition: background 150ms ease, border-color 150ms ease;
+}
+
+.cloze__choice:hover {
+  border-color: var(--celadon);
+}
+
+.cloze__choice.is-correct {
+  background: rgba(79, 138, 116, 0.2);
+  border-color: var(--celadon-deep);
+}
+
+.cloze__choice.is-wrong {
+  background: rgba(196, 74, 62, 0.16);
+  border-color: #c44a3e;
+}
+
+.cloze__actions {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 1.1rem;
+}
+
+.cloze__score {
+  font-family: var(--font-ko);
+  font-size: 1.15rem;
+  color: var(--celadon-deep);
+}
+
+.cloze--done {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.library__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-bottom: 1.4rem;
+}
+
+.hangul__section {
+  margin-top: 1.8rem;
+}
+
+.hangul__section h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+}
+
+.hangul__description {
+  margin-top: 0.3rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.hangul__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: 0.55rem;
+  margin-top: 0.9rem;
+}
+
+.hangul__tile {
+  display: grid;
+  gap: 0.1rem;
+  justify-items: center;
+  padding: 0.75rem 0.4rem;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  transition: background 150ms ease, border-color 150ms ease, transform 150ms ease;
+}
+
+.hangul__tile:hover {
+  transform: translateY(-1px);
+  border-color: var(--celadon);
+  background: rgba(79, 138, 116, 0.1);
+}
+
+.hangul__char {
+  font-family: var(--font-ko);
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--celadon-deep);
+}
+
+.hangul__roman {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.hangul__sample {
+  font-family: var(--font-ko);
+  font-size: 0.95rem;
+}
+
+.hangul__footnote {
+  margin-top: 2rem;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
 @keyframes rise-in {
   from {
     opacity: 0;

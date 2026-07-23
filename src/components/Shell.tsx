@@ -36,6 +36,13 @@ export default function Shell({ view, dueCount, onNavigate, children }: ShellPro
             </button>
             <button
               type="button"
+              className={view.name === 'hangul' ? 'is-active' : ''}
+              onClick={() => onNavigate({ name: 'hangul' })}
+            >
+              Hangul
+            </button>
+            <button
+              type="button"
               className={view.name === 'progress' ? 'is-active' : ''}
               onClick={() => onNavigate({ name: 'progress' })}
             >

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import type { Story, StoryWord } from '../types'
 import { speakKorean, stopSpeaking } from '../lib/speech'
+import WordCloze from './WordCloze'
 import WordMatch from './WordMatch'
 
 type StoryReaderProps = {
@@ -23,7 +24,7 @@ export default function StoryReader({
   const [showArt, setShowArt] = useState(true)
   const [activeWord, setActiveWord] = useState<StoryWord | null>(null)
   const [finished, setFinished] = useState(false)
-  const [practicing, setPracticing] = useState(false)
+  const [practiceMode, setPracticeMode] = useState<'none' | 'match' | 'cloze'>('none')
 
   useEffect(() => {
     return () => stopSpeaking()
@@ -114,11 +115,30 @@ export default function StoryReader({
                   loading="lazy"
                 />
               ) : null}
-              <p className="passage__ko">
-                {renderKoreanWithWords(paragraph.ko, paragraph.words, (word) => {
-                  setActiveWord(word)
-                })}
-              </p>
+              <div className="passage__row">
+                <p className="passage__ko">
+                  {renderKoreanWithWords(paragraph.ko, paragraph.words, (word) => {
+                    setActiveWord(word)
+                  })}
+                </p>
+                <button
+                  type="button"
+                  className="passage__listen"
+                  aria-label="Listen to this paragraph"
+                  title="Listen"
+                  onClick={(event) => {
+                    event.stopPropagation()
+                    speakKorean(paragraph.ko)
+                  }}
+                >
+                  <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                    <path
+                      d="M4 9v6h4l5 4V5L8 9H4zm12.5 3a3.5 3.5 0 0 0-2-3.15v6.3a3.5 3.5 0 0 0 2-3.15zm-2-7v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </button>
+              </div>
               <p className={`passage__en ${open ? 'is-visible' : ''}`}>{paragraph.en}</p>
             </div>
           )
@@ -156,13 +176,24 @@ export default function StoryReader({
           </ul>
 
           <div className="reader__practice">
-            {practicing ? (
-              <WordMatch words={allWords.slice(0, 6)} />
-            ) : (
-              <button type="button" className="btn btn--ghost" onClick={() => setPracticing(true)}>
-                Practice with a matching game
+            <div className="practice-tabs">
+              <button
+                type="button"
+                className={`btn btn--chip ${practiceMode === 'match' ? 'is-active' : ''}`}
+                onClick={() => setPracticeMode(practiceMode === 'match' ? 'none' : 'match')}
+              >
+                Matching game
               </button>
-            )}
+              <button
+                type="button"
+                className={`btn btn--chip ${practiceMode === 'cloze' ? 'is-active' : ''}`}
+                onClick={() => setPracticeMode(practiceMode === 'cloze' ? 'none' : 'cloze')}
+              >
+                Fill in the blank
+              </button>
+            </div>
+            {practiceMode === 'match' ? <WordMatch words={allWords.slice(0, 6)} /> : null}
+            {practiceMode === 'cloze' ? <WordCloze story={story} /> : null}
           </div>
         </div>
       )}

@@ -9,7 +9,10 @@
 - Tap a paragraph to reveal the English translation
 - Tap underlined words for meanings, romanization, and audio
 - Save words to a notebook and review them with light spacing
-- Practice story vocabulary with a matching game after reading
+- Listen to any paragraph (or the whole story) with Korean text-to-speech
+- Practice story vocabulary with a matching game or fill-in-the-blank quiz after reading
+- Learn the alphabet on the Hangul page, with tap-to-hear letters
+- Filter the library by level (A1 beginner, A2 elementary)
 - Track streaks, days practiced, and reviews on the Progress page
 - Export and import your progress as a JSON backup
 - Installable PWA with offline support (stories, fonts, and assets are cached)

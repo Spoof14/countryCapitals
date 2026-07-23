@@ -58,3 +58,4 @@ export type AppView =
   | { name: 'words' }
   | { name: 'review' }
   | { name: 'progress' }
+  | { name: 'hangul' }

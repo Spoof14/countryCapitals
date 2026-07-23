@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import HangulPrimer from './components/HangulPrimer'
 import Landing from './components/Landing'
 import ProgressPanel from './components/ProgressPanel'
 import Shell from './components/Shell'
@@ -90,6 +91,8 @@ function App() {
           onDone={() => setView({ name: 'words' })}
         />
       ) : null}
+
+      {view.name === 'hangul' ? <HangulPrimer /> : null}
 
       {view.name === 'progress' ? (
         <ProgressPanel
