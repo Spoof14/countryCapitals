@@ -380,6 +380,15 @@
   background: rgba(255, 255, 255, 0.42);
 }
 
+.passage.is-speaking {
+  background: rgba(79, 138, 116, 0.14);
+  box-shadow: inset 3px 0 0 var(--celadon);
+}
+
+.passage.is-speaking .passage__ko {
+  color: var(--celadon-deep);
+}
+
 .passage__art {
   width: 100%;
   aspect-ratio: 16 / 7;
@@ -767,6 +776,23 @@
 .passage__listen:hover {
   background: rgba(79, 138, 116, 0.16);
   border-color: var(--celadon);
+}
+
+.passage__listen.is-active {
+  background: var(--celadon);
+  border-color: var(--celadon-deep);
+  color: #f4faf7;
+  animation: listen-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes listen-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(79, 138, 116, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(79, 138, 116, 0);
+  }
 }
 
 .practice-tabs {
