@@ -79,13 +79,19 @@ export function useLearnerState() {
     setWords((prev) => prev.filter((word) => word.ko !== ko))
   }
 
+  // Expanding intervals; spacing meta-analyses (Kim & Webb 2022) find longer
+  // gaps retain better, and equal vs. expanding schedules perform the same.
+  const REVIEW_DELAYS_DAYS = [1, 3, 7, 16, 35, 75]
+
   const reviewWord = (ko: string, remembered: boolean) => {
     recordActivity({ review: true })
     setWords((prev) =>
       prev.map((word) => {
         if (word.ko !== ko) return word
         const reviews = remembered ? word.reviews + 1 : Math.max(0, word.reviews - 1)
-        const delayDays = remembered ? Math.min(14, 1 + reviews * 2) : 0.5
+        const delayDays = remembered
+          ? REVIEW_DELAYS_DAYS[Math.min(reviews - 1, REVIEW_DELAYS_DAYS.length - 1)]
+          : 0.5
         return {
           ...word,
           reviews,

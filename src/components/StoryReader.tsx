@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import type { Story, StoryWord } from '../types'
 import { createKoreanUtterance, speakKorean, stopSpeaking } from '../lib/speech'
+import SentenceBuilder from './SentenceBuilder'
+import StoryQuiz from './StoryQuiz'
 import WordCloze from './WordCloze'
 import WordMatch from './WordMatch'
 
@@ -24,7 +26,7 @@ export default function StoryReader({
   const [showArt, setShowArt] = useState(true)
   const [activeWord, setActiveWord] = useState<StoryWord | null>(null)
   const [finished, setFinished] = useState(false)
-  const [practiceMode, setPracticeMode] = useState<'none' | 'match' | 'cloze'>('none')
+  const [practiceMode, setPracticeMode] = useState<'none' | 'match' | 'cloze' | 'build'>('none')
 
   // Which paragraph is currently being read aloud (null when silent).
   const [speakingIndex, setSpeakingIndex] = useState<number | null>(null)
@@ -200,7 +202,15 @@ export default function StoryReader({
       ) : (
         <div className="reader__complete">
           <h3>잘했어요 — nice reading.</h3>
-          <p>Save a few words while they’re still warm.</p>
+
+          {story.questions.length > 0 ? (
+            <div className="reader__quiz">
+              <h4>Did you catch it?</h4>
+              <StoryQuiz questions={story.questions} />
+            </div>
+          ) : null}
+
+          <p className="reader__save-hint">Save a few words while they’re still warm.</p>
           <ul className="word-save-list">
             {allWords.slice(0, 8).map((word) => {
               const saved = savedWordKeys.has(word.ko)
@@ -237,9 +247,17 @@ export default function StoryReader({
               >
                 Fill in the blank
               </button>
+              <button
+                type="button"
+                className={`btn btn--chip ${practiceMode === 'build' ? 'is-active' : ''}`}
+                onClick={() => setPracticeMode(practiceMode === 'build' ? 'none' : 'build')}
+              >
+                Build sentences
+              </button>
             </div>
             {practiceMode === 'match' ? <WordMatch words={allWords.slice(0, 6)} /> : null}
             {practiceMode === 'cloze' ? <WordCloze story={story} /> : null}
+            {practiceMode === 'build' ? <SentenceBuilder story={story} /> : null}
           </div>
         </div>
       )}
