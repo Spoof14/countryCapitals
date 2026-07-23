@@ -18,4 +18,17 @@ yarn build
 yarn preview
 ```
 
+## GitHub Pages
+
+The app is configured for project Pages at:
+
+`https://spoof14.github.io/countryCapitals/`
+
+After merging to `main`, enable Pages once in the repo:
+
+1. **Settings → Pages**
+2. **Source:** GitHub Actions
+
+Pushes to `main` run `.github/workflows/deploy-pages.yml`, which builds with Vite `base: '/countryCapitals/'` and deploys the `dist` folder.
+
 Korean speech uses the browser's `speechSynthesis` API when a `ko-KR` voice is available.

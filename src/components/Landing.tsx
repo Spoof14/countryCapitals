@@ -7,7 +7,7 @@ export default function Landing({ onBrowse, onContinue }: LandingProps) {
   return (
     <section className="hero">
       <div className="hero__media" aria-hidden="true">
-        <img src="/hero-mist.jpg" alt="" className="hero__image" />
+        <img src={`${import.meta.env.BASE_URL}hero-mist.jpg`} alt="" className="hero__image" />
         <div className="hero__veil" />
       </div>
 
