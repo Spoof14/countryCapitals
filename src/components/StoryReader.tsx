@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import type { Story, StoryWord } from '../types'
 import { speakKorean, stopSpeaking } from '../lib/speech'
+import WordMatch from './WordMatch'
 
 type StoryReaderProps = {
   story: Story
@@ -21,6 +22,7 @@ export default function StoryReader({
   const [showAllEnglish, setShowAllEnglish] = useState(false)
   const [activeWord, setActiveWord] = useState<StoryWord | null>(null)
   const [finished, setFinished] = useState(false)
+  const [practicing, setPracticing] = useState(false)
 
   useEffect(() => {
     return () => stopSpeaking()
@@ -135,6 +137,16 @@ export default function StoryReader({
               )
             })}
           </ul>
+
+          <div className="reader__practice">
+            {practicing ? (
+              <WordMatch words={allWords.slice(0, 6)} />
+            ) : (
+              <button type="button" className="btn btn--ghost" onClick={() => setPracticing(true)}>
+                Practice with a matching game
+              </button>
+            )}
+          </div>
         </div>
       )}
 
