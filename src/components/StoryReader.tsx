@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import type { Story, StoryWord } from '../types'
 import { createKoreanUtterance, speakKorean, stopSpeaking } from '../lib/speech'
 import SentenceBuilder from './SentenceBuilder'
@@ -262,45 +263,55 @@ export default function StoryReader({
         </div>
       )}
 
-      {activeWord ? (
-        <div className="word-sheet" role="dialog" aria-label="Word meaning">
-          <div className="word-sheet__card">
-            <button
-              type="button"
-              className="word-sheet__close"
+      {activeWord
+        ? // Rendered in a portal: ancestor transforms (e.g. the panel's entry
+          // animation) would otherwise re-anchor this fixed overlay.
+          createPortal(
+            <div
+              className="word-sheet"
+              role="dialog"
+              aria-label="Word meaning"
               onClick={() => setActiveWord(null)}
-              aria-label="Close"
             >
-              ×
-            </button>
-            <p className="word-sheet__ko">{activeWord.ko}</p>
-            {activeWord.romanization ? (
-              <p className="word-sheet__rom">{activeWord.romanization}</p>
-            ) : null}
-            <p className="word-sheet__en">{activeWord.en}</p>
-            <div className="word-sheet__actions">
-              <button
-                type="button"
-                className="btn btn--chip"
-                onClick={() => speakKorean(activeWord.ko)}
-              >
-                Hear it
-              </button>
-              <button
-                type="button"
-                className="btn btn--primary"
-                onClick={() => {
-                  onSaveWord(activeWord)
-                  setActiveWord(null)
-                }}
-                disabled={savedWordKeys.has(activeWord.ko)}
-              >
-                {savedWordKeys.has(activeWord.ko) ? 'Already saved' : 'Save word'}
-              </button>
-            </div>
-          </div>
-        </div>
-      ) : null}
+              <div className="word-sheet__card" onClick={(event) => event.stopPropagation()}>
+                <button
+                  type="button"
+                  className="word-sheet__close"
+                  onClick={() => setActiveWord(null)}
+                  aria-label="Close"
+                >
+                  ×
+                </button>
+                <p className="word-sheet__ko">{activeWord.ko}</p>
+                {activeWord.romanization ? (
+                  <p className="word-sheet__rom">{activeWord.romanization}</p>
+                ) : null}
+                <p className="word-sheet__en">{activeWord.en}</p>
+                <div className="word-sheet__actions">
+                  <button
+                    type="button"
+                    className="btn btn--chip"
+                    onClick={() => speakKorean(activeWord.ko)}
+                  >
+                    Hear it
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn--primary"
+                    onClick={() => {
+                      onSaveWord(activeWord)
+                      setActiveWord(null)
+                    }}
+                    disabled={savedWordKeys.has(activeWord.ko)}
+                  >
+                    {savedWordKeys.has(activeWord.ko) ? 'Already saved' : 'Save word'}
+                  </button>
+                </div>
+              </div>
+            </div>,
+            document.body,
+          )
+        : null}
     </section>
   )
 }
