@@ -1,4 +1,5 @@
-import type { ProgressState, Story } from '../types'
+import { useState } from 'react'
+import type { CEFRLevel, ProgressState, Story } from '../types'
 
 type StoryLibraryProps = {
   stories: Story[]
@@ -6,13 +7,19 @@ type StoryLibraryProps = {
   onOpen: (storyId: string) => void
 }
 
-const levelLabel: Record<Story['level'], string> = {
+const levelLabel: Record<CEFRLevel, string> = {
   A1: 'Beginner',
   A2: 'Elementary',
   B1: 'Intermediate',
 }
 
 export default function StoryLibrary({ stories, progress, onOpen }: StoryLibraryProps) {
+  const [levelFilter, setLevelFilter] = useState<CEFRLevel | 'all'>('all')
+
+  const levels = [...new Set(stories.map((story) => story.level))].sort()
+  const visibleStories =
+    levelFilter === 'all' ? stories : stories.filter((story) => story.level === levelFilter)
+
   return (
     <section className="panel library">
       <header className="panel__header">
@@ -20,8 +27,30 @@ export default function StoryLibrary({ stories, progress, onOpen }: StoryLibrary
         <p>Short Korean texts first. English waits underneath until you ask.</p>
       </header>
 
+      {levels.length > 1 ? (
+        <div className="library__filters">
+          <button
+            type="button"
+            className={`btn btn--chip ${levelFilter === 'all' ? 'is-active' : ''}`}
+            onClick={() => setLevelFilter('all')}
+          >
+            All levels
+          </button>
+          {levels.map((level) => (
+            <button
+              key={level}
+              type="button"
+              className={`btn btn--chip ${levelFilter === level ? 'is-active' : ''}`}
+              onClick={() => setLevelFilter(level)}
+            >
+              {level} · {levelLabel[level]}
+            </button>
+          ))}
+        </div>
+      ) : null}
+
       <ul className="story-list">
-        {stories.map((story) => {
+        {visibleStories.map((story) => {
           const done = progress.completedStoryIds.includes(story.id)
           return (
             <li key={story.id}>

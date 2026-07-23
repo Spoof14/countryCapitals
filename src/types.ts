@@ -14,6 +14,12 @@ export type StoryParagraph = {
   image?: string
 }
 
+export type ComprehensionQuestion = {
+  question: string
+  options: string[]
+  answerIndex: number
+}
+
 export type Story = {
   id: string
   titleKo: string
@@ -23,6 +29,7 @@ export type Story = {
   minutes: number
   theme: string
   paragraphs: StoryParagraph[]
+  questions: ComprehensionQuestion[]
 }
 
 export type SavedWord = StoryWord & {
@@ -58,3 +65,4 @@ export type AppView =
   | { name: 'words' }
   | { name: 'review' }
   | { name: 'progress' }
+  | { name: 'hangul' }
