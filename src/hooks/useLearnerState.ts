@@ -1,7 +1,9 @@
+import { useEffect, useState } from 'react'
 import type { ProgressState, SavedWord, StoryWord } from '../types'
 import { useLocalStorage } from './useLocalStorage'
 
 const DAY_MS = 24 * 60 * 60 * 1000
+const MINUTE_MS = 60 * 1000
 
 const initialProgress: ProgressState = {
   completedStoryIds: [],
@@ -14,6 +16,14 @@ export function useLearnerState() {
     initialProgress,
   )
   const [words, setWords] = useLocalStorage<SavedWord[]>('madang.words', [])
+
+  // Keep a "current time" in state so due-word calculations stay pure during
+  // render and refresh on a light interval.
+  const [now, setNow] = useState(() => Date.now())
+  useEffect(() => {
+    const id = setInterval(() => setNow(Date.now()), MINUTE_MS)
+    return () => clearInterval(id)
+  }, [])
 
   const markStoryCompleted = (storyId: string) => {
     setProgress((prev) => ({
@@ -64,7 +74,7 @@ export function useLearnerState() {
   }
 
   const dueWords = words
-    .filter((word) => word.nextReviewAt <= Date.now())
+    .filter((word) => word.nextReviewAt <= now)
     .sort((a, b) => a.nextReviewAt - b.nextReviewAt)
 
   return {
