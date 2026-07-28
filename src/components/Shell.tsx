@@ -1,57 +1,42 @@
-import type { ReactNode } from 'react'
-import type { AppView } from '../types'
+import { Link, Outlet, useRouterState } from '@tanstack/react-router'
+import { useLearner } from '../context/LearnerContext'
 
-type ShellProps = {
-  view: AppView
-  dueCount: number
-  onNavigate: (view: AppView) => void
-  children: ReactNode
+function navClass(active: boolean) {
+  return `topbar__nav-link${active ? ' is-active' : ''}`
 }
 
-export default function Shell({ view, dueCount, onNavigate, children }: ShellProps) {
-  const hideChrome = view.name === 'home'
+export default function Shell({ children }: { children?: React.ReactNode }) {
+  const { dueWords } = useLearner()
+  const pathname = useRouterState({ select: (state) => state.location.pathname })
+  const hideChrome = pathname === '/'
+  const storiesActive = pathname === '/library' || pathname.startsWith('/story/')
+  const wordsActive = pathname === '/words' || pathname === '/review'
 
   return (
     <div className={`app ${hideChrome ? 'app--home' : ''}`}>
       {!hideChrome ? (
         <header className="topbar">
-          <button type="button" className="topbar__brand" onClick={() => onNavigate({ name: 'home' })}>
+          <Link to="/" className="topbar__brand">
             <span className="brand__ko">마당</span>
             <span className="brand__en">Madang</span>
-          </button>
+          </Link>
           <nav className="topbar__nav" aria-label="Primary">
-            <button
-              type="button"
-              className={view.name === 'library' || view.name === 'story' ? 'is-active' : ''}
-              onClick={() => onNavigate({ name: 'library' })}
-            >
+            <Link to="/library" className={navClass(storiesActive)}>
               Stories
-            </button>
-            <button
-              type="button"
-              className={view.name === 'words' || view.name === 'review' ? 'is-active' : ''}
-              onClick={() => onNavigate({ name: 'words' })}
-            >
-              Words{dueCount > 0 ? ` (${dueCount})` : ''}
-            </button>
-            <button
-              type="button"
-              className={view.name === 'hangul' ? 'is-active' : ''}
-              onClick={() => onNavigate({ name: 'hangul' })}
-            >
+            </Link>
+            <Link to="/words" className={navClass(wordsActive)}>
+              Words{dueWords.length > 0 ? ` (${dueWords.length})` : ''}
+            </Link>
+            <Link to="/hangul" className={navClass(pathname === '/hangul')}>
               Hangul
-            </button>
-            <button
-              type="button"
-              className={view.name === 'progress' ? 'is-active' : ''}
-              onClick={() => onNavigate({ name: 'progress' })}
-            >
+            </Link>
+            <Link to="/progress" className={navClass(pathname === '/progress')}>
               Progress
-            </button>
+            </Link>
           </nav>
         </header>
       ) : null}
-      <main className="main">{children}</main>
+      <main className="main">{children ?? <Outlet />}</main>
     </div>
   )
 }

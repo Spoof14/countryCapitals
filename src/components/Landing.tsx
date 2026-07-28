@@ -1,9 +1,11 @@
+import { Link } from '@tanstack/react-router'
+
 type LandingProps = {
-  onBrowse: () => void
-  onContinue?: () => void
+  onBrowse: string
+  continueStoryId?: string
 }
 
-export default function Landing({ onBrowse, onContinue }: LandingProps) {
+export default function Landing({ onBrowse, continueStoryId }: LandingProps) {
   return (
     <section className="hero">
       <div className="hero__media" aria-hidden="true">
@@ -21,13 +23,17 @@ export default function Landing({ onBrowse, onContinue }: LandingProps) {
           Read short folklore and everyday scenes in Korean. Peek at English only when you need it.
         </p>
         <div className="hero__actions">
-          <button type="button" className="btn btn--primary" onClick={onBrowse}>
+          <Link to={onBrowse} className="btn btn--primary">
             Start reading
-          </button>
-          {onContinue ? (
-            <button type="button" className="btn btn--ghost" onClick={onContinue}>
+          </Link>
+          {continueStoryId ? (
+            <Link
+              to="/story/$storyId"
+              params={{ storyId: continueStoryId }}
+              className="btn btn--ghost"
+            >
               Continue last story
-            </button>
+            </Link>
           ) : null}
         </div>
       </div>

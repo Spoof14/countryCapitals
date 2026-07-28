@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useCanGoBack, useNavigate, useRouter } from '@tanstack/react-router'
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import type { Story, StoryWord } from '../types'
 import { createKoreanUtterance, speakKorean, stopSpeaking } from '../lib/speech'
@@ -10,7 +11,6 @@ import WordMatch from './WordMatch'
 type StoryReaderProps = {
   story: Story
   savedWordKeys: Set<string>
-  onBack: () => void
   onComplete: () => void
   onSaveWord: (word: StoryWord) => void
 }
@@ -18,7 +18,6 @@ type StoryReaderProps = {
 export default function StoryReader({
   story,
   savedWordKeys,
-  onBack,
   onComplete,
   onSaveWord,
 }: StoryReaderProps) {
@@ -28,6 +27,7 @@ export default function StoryReader({
   const [activeWord, setActiveWord] = useState<StoryWord | null>(null)
   const [finished, setFinished] = useState(false)
   const [practiceMode, setPracticeMode] = useState<'none' | 'match' | 'cloze' | 'build'>('none')
+  const [brokenImages, setBrokenImages] = useState<Set<string>>(() => new Set())
 
   // Which paragraph is currently being read aloud (null when silent).
   const [speakingIndex, setSpeakingIndex] = useState<number | null>(null)
@@ -36,6 +36,18 @@ export default function StoryReader({
   const utterancesRef = useRef<SpeechSynthesisUtterance[]>([])
   const sessionRef = useRef(0)
   const passageRefs = useRef<Array<HTMLDivElement | null>>([])
+  const router = useRouter()
+  const navigate = useNavigate()
+  const canGoBack = useCanGoBack()
+
+  const goBack = () => {
+    if (canGoBack) router.history.back()
+    else navigate({ to: '/library' })
+  }
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0)
+  }, [story.id])
 
   useEffect(() => {
     return () => stopSpeaking()
@@ -96,7 +108,7 @@ export default function StoryReader({
   return (
     <section className="panel reader">
       <header className="reader__top">
-        <button type="button" className="btn btn--text" onClick={onBack}>
+        <button type="button" className="btn btn--text" onClick={goBack}>
           ← Stories
         </button>
         <div className="reader__controls">
@@ -163,13 +175,16 @@ export default function StoryReader({
                 }
               }}
             >
-              {showArt && paragraph.image ? (
+              {showArt && paragraph.image && !brokenImages.has(paragraph.image) ? (
                 <img
                   className="passage__art"
                   src={`${import.meta.env.BASE_URL}${paragraph.image}`}
                   alt=""
                   aria-hidden="true"
                   loading="lazy"
+                  onError={() => {
+                    setBrokenImages((prev) => new Set(prev).add(paragraph.image!))
+                  }}
                 />
               ) : null}
               <div className="passage__row">

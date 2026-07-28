@@ -1,3 +1,4 @@
+import { useNavigate } from '@tanstack/react-router'
 import { useState } from 'react'
 import type { CEFRLevel, ProgressState, Story } from '../types'
 import { storyCategories, storyMatchesCategory, type StoryCategory } from '../lib/storyCategories'
@@ -5,7 +6,7 @@ import { storyCategories, storyMatchesCategory, type StoryCategory } from '../li
 type StoryLibraryProps = {
   stories: Story[]
   progress: ProgressState
-  onOpen: (storyId: string) => void
+  onOpen?: (storyId: string) => void
 }
 
 const levelLabel: Record<CEFRLevel, string> = {
@@ -15,6 +16,7 @@ const levelLabel: Record<CEFRLevel, string> = {
 }
 
 export default function StoryLibrary({ stories, progress, onOpen }: StoryLibraryProps) {
+  const navigate = useNavigate()
   const [categoryFilter, setCategoryFilter] = useState<StoryCategory>('all')
   const [levelFilter, setLevelFilter] = useState<CEFRLevel | 'all'>('all')
   const [query, setQuery] = useState('')
@@ -101,7 +103,14 @@ export default function StoryLibrary({ stories, progress, onOpen }: StoryLibrary
             const done = progress.completedStoryIds.includes(story.id)
             return (
               <li key={story.id}>
-                <button type="button" className="story-row" onClick={() => onOpen(story.id)}>
+                <button
+                  type="button"
+                  className="story-row"
+                  onClick={() => {
+                    onOpen?.(story.id)
+                    navigate({ to: '/story/$storyId', params: { storyId: story.id } })
+                  }}
+                >
                   <div className="story-row__body">
                     <div className="story-row__meta">
                       <span className="story-row__theme">{story.theme}</span>
