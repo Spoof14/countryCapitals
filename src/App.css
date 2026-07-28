@@ -1099,6 +1099,98 @@
   gap: 0.55rem;
 }
 
+.library__upgrade {
+  display: grid;
+  gap: 0.85rem;
+  padding: 1rem 1.1rem;
+  margin-bottom: 1.25rem;
+  border-radius: 14px;
+  border: 1px solid rgba(79, 138, 116, 0.25);
+  background: rgba(79, 138, 116, 0.08);
+}
+
+.library__upgrade p {
+  margin: 0;
+  color: var(--ink-soft);
+}
+
+.story-row--locked {
+  opacity: 0.82;
+}
+
+.story-row--locked .story-row__cover {
+  filter: grayscale(0.35) brightness(0.92);
+}
+
+.story-row__lock {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #8a5a2b;
+  background: rgba(138, 90, 43, 0.12);
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+}
+
+.topbar__nav-link--accent {
+  color: var(--celadon-deep);
+  background: rgba(79, 138, 116, 0.14);
+}
+
+.paywall__price {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.paywall__amount {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--celadon-deep);
+}
+
+.paywall__once {
+  margin: 0.35rem 0 0;
+  color: var(--ink-soft);
+}
+
+.paywall__features {
+  margin: 0 0 1.5rem;
+  padding-left: 1.2rem;
+  color: var(--ink-soft);
+  display: grid;
+  gap: 0.45rem;
+}
+
+.paywall__actions {
+  display: grid;
+  gap: 0.65rem;
+  justify-items: start;
+}
+
+.paywall__error {
+  margin: 0 0 1rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: 12px;
+  background: rgba(180, 60, 60, 0.08);
+  color: #8a3030;
+}
+
+.paywall__note,
+.paywall__store-note {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
+
+.paywall__store-note {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+
 .reader__cover {
   width: 100%;
   aspect-ratio: 16 / 7;
