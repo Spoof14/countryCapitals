@@ -1044,10 +1044,38 @@
   flex-wrap: wrap;
 }
 
+.library__controls {
+  display: grid;
+  gap: 0.8rem;
+  margin-bottom: 1.4rem;
+}
+
+.library__search {
+  width: 100%;
+  max-width: 420px;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface-strong);
+  color: var(--ink);
+}
+
+.library__search::placeholder {
+  color: var(--ink-soft);
+}
+
 .library__filters {
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
+}
+
+.reader__cover {
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid var(--line);
   margin-bottom: 1.4rem;
 }
 

@@ -133,6 +133,15 @@ export default function StoryReader({
         <p className="reader__hint">Tap a paragraph for English. Tap a highlighted word for meaning.</p>
       </div>
 
+      {showArt && story.cover && !story.paragraphs.some((paragraph) => paragraph.image) ? (
+        <img
+          className="reader__cover"
+          src={`${import.meta.env.BASE_URL}${story.cover}`}
+          alt=""
+          aria-hidden="true"
+        />
+      ) : null}
+
       <article className="reader__body">
         {story.paragraphs.map((paragraph, index) => {
           const open = showAllEnglish || openParagraphs[index]

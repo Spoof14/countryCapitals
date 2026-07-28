@@ -1,11 +1,15 @@
-import type { Story } from '../types'
+import type { Story } from '../../types'
 
 /** Stories whose illustration files use a shorter name than their id. */
-const artIdOverrides: Record<string, string> = {
+export const artIdOverrides: Record<string, string> = {
   'dokkaebi-bangmangi': 'dokkaebi',
 }
 
-const rawStories: Story[] = [
+/**
+ * The original ten Korean stories. Unlike the newer collections these have a
+ * full illustration per paragraph; the index module attaches the image paths.
+ */
+export const koreanFolkloreStories: Story[] = [
   {
     id: 'sun-and-moon',
     titleKo: '해와 달이 된 오누이',
@@ -902,13 +906,3 @@ const rawStories: Story[] = [
   },
 ]
 
-// Every paragraph has an illustration named `story-art/<artId>-<n>.jpg`.
-export const stories: Story[] = rawStories.map((story) => ({
-  ...story,
-  paragraphs: story.paragraphs.map((paragraph, index) => ({
-    ...paragraph,
-    image: `story-art/${artIdOverrides[story.id] ?? story.id}-${index + 1}.jpg`,
-  })),
-}))
-
-export const getStoryById = (id: string) => stories.find((story) => story.id === id)

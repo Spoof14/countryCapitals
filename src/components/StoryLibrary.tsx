@@ -15,71 +15,96 @@ const levelLabel: Record<CEFRLevel, string> = {
 
 export default function StoryLibrary({ stories, progress, onOpen }: StoryLibraryProps) {
   const [levelFilter, setLevelFilter] = useState<CEFRLevel | 'all'>('all')
+  const [query, setQuery] = useState('')
 
   const levels = [...new Set(stories.map((story) => story.level))].sort()
-  const visibleStories =
-    levelFilter === 'all' ? stories : stories.filter((story) => story.level === levelFilter)
+  const trimmedQuery = query.trim().toLowerCase()
+
+  const visibleStories = stories.filter((story) => {
+    if (levelFilter !== 'all' && story.level !== levelFilter) return false
+    if (!trimmedQuery) return true
+    return [story.titleKo, story.titleEn, story.summary, story.theme]
+      .join(' ')
+      .toLowerCase()
+      .includes(trimmedQuery)
+  })
 
   return (
     <section className="panel library">
       <header className="panel__header">
         <h2>Stories</h2>
-        <p>Short Korean texts first. English waits underneath until you ask.</p>
+        <p>
+          {stories.length} stories, Korean first. English waits underneath until you ask.
+        </p>
       </header>
 
-      {levels.length > 1 ? (
-        <div className="library__filters">
-          <button
-            type="button"
-            className={`btn btn--chip ${levelFilter === 'all' ? 'is-active' : ''}`}
-            onClick={() => setLevelFilter('all')}
-          >
-            All levels
-          </button>
-          {levels.map((level) => (
+      <div className="library__controls">
+        <input
+          type="search"
+          className="library__search"
+          placeholder="Search stories…"
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          aria-label="Search stories"
+        />
+        {levels.length > 1 ? (
+          <div className="library__filters">
             <button
-              key={level}
               type="button"
-              className={`btn btn--chip ${levelFilter === level ? 'is-active' : ''}`}
-              onClick={() => setLevelFilter(level)}
+              className={`btn btn--chip ${levelFilter === 'all' ? 'is-active' : ''}`}
+              onClick={() => setLevelFilter('all')}
             >
-              {level} · {levelLabel[level]}
+              All levels
             </button>
-          ))}
-        </div>
-      ) : null}
-
-      <ul className="story-list">
-        {visibleStories.map((story) => {
-          const done = progress.completedStoryIds.includes(story.id)
-          return (
-            <li key={story.id}>
-              <button type="button" className="story-row" onClick={() => onOpen(story.id)}>
-                <div className="story-row__body">
-                  <div className="story-row__meta">
-                    <span className="story-row__theme">{story.theme}</span>
-                    <span className="story-row__level">{levelLabel[story.level]}</span>
-                    <span className="story-row__time">{story.minutes} min</span>
-                    {done ? <span className="story-row__done">Read</span> : null}
-                  </div>
-                  <h3 className="story-row__title-ko">{story.titleKo}</h3>
-                  <p className="story-row__title-en">{story.titleEn}</p>
-                  <p className="story-row__summary">{story.summary}</p>
-                </div>
-                {story.paragraphs[0]?.image ? (
-                  <img
-                    className="story-row__cover"
-                    src={`${import.meta.env.BASE_URL}${story.paragraphs[0].image}`}
-                    alt=""
-                    aria-hidden="true"
-                    loading="lazy"
-                  />
-                ) : null}
+            {levels.map((level) => (
+              <button
+                key={level}
+                type="button"
+                className={`btn btn--chip ${levelFilter === level ? 'is-active' : ''}`}
+                onClick={() => setLevelFilter(level)}
+              >
+                {level} · {levelLabel[level]}
               </button>
-            </li>
-          )
-        })}
-      </ul>
+            ))}
+          </div>
+        ) : null}
+      </div>
+
+      {visibleStories.length === 0 ? (
+        <p className="empty">No stories match your search.</p>
+      ) : (
+        <ul className="story-list">
+          {visibleStories.map((story) => {
+            const done = progress.completedStoryIds.includes(story.id)
+            return (
+              <li key={story.id}>
+                <button type="button" className="story-row" onClick={() => onOpen(story.id)}>
+                  <div className="story-row__body">
+                    <div className="story-row__meta">
+                      <span className="story-row__theme">{story.theme}</span>
+                      <span className="story-row__level">{levelLabel[story.level]}</span>
+                      <span className="story-row__time">{story.minutes} min</span>
+                      {done ? <span className="story-row__done">Read</span> : null}
+                    </div>
+                    <h3 className="story-row__title-ko">{story.titleKo}</h3>
+                    <p className="story-row__title-en">{story.titleEn}</p>
+                    <p className="story-row__summary">{story.summary}</p>
+                  </div>
+                  {story.cover ? (
+                    <img
+                      className="story-row__cover"
+                      src={`${import.meta.env.BASE_URL}${story.cover}`}
+                      alt=""
+                      aria-hidden="true"
+                      loading="lazy"
+                    />
+                  ) : null}
+                </button>
+              </li>
+            )
+          })}
+        </ul>
+      )}
     </section>
   )
 }
