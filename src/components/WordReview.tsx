@@ -1,3 +1,4 @@
+import { Link } from '@tanstack/react-router'
 import { useMemo, useState } from 'react'
 import type { SavedWord } from '../types'
 import { speakKorean } from '../lib/speech'
@@ -5,10 +6,10 @@ import { speakKorean } from '../lib/speech'
 type WordReviewProps = {
   dueWords: SavedWord[]
   onGrade: (ko: string, remembered: boolean) => void
-  onDone: () => void
+  doneTo: string
 }
 
-export default function WordReview({ dueWords, onGrade, onDone }: WordReviewProps) {
+export default function WordReview({ dueWords, onGrade, doneTo }: WordReviewProps) {
   const queue = useMemo(() => dueWords.slice(0, 12), [dueWords])
   const [index, setIndex] = useState(0)
   const [flipped, setFlipped] = useState(false)
@@ -23,9 +24,9 @@ export default function WordReview({ dueWords, onGrade, onDone }: WordReviewProp
           <h2>Review complete</h2>
           <p>Come back after your next story. Spaced practice sticks better than cramming.</p>
         </header>
-        <button type="button" className="btn btn--primary" onClick={onDone}>
+        <Link to={doneTo} className="btn btn--primary">
           Back to words
-        </button>
+        </Link>
       </section>
     )
   }

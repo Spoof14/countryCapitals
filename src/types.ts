@@ -59,12 +59,3 @@ export type ExportedData = {
   words: SavedWord[]
   activity: ActivityState
 }
-
-export type AppView =
-  | { name: 'home' }
-  | { name: 'library' }
-  | { name: 'story'; storyId: string }
-  | { name: 'words' }
-  | { name: 'review' }
-  | { name: 'progress' }
-  | { name: 'hangul' }

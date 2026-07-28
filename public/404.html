@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Madang</title>
+    <script>
+      ;(function () {
+        var base = '/countryCapitals/'
+        var path = location.pathname.replace(base, '/')
+        var search = location.search || ''
+        var hash = location.hash || ''
+        sessionStorage.setItem('madang-redirect', JSON.stringify({ path, search, hash }))
+        location.replace(base)
+      })()
+    </script>
+  </head>
+  <body></body>
+</html>

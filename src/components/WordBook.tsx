@@ -1,3 +1,4 @@
+import { Link } from '@tanstack/react-router'
 import type { SavedWord } from '../types'
 import { speakKorean } from '../lib/speech'
 
@@ -5,10 +6,10 @@ type WordBookProps = {
   words: SavedWord[]
   dueCount: number
   onRemove: (ko: string) => void
-  onReview: () => void
+  reviewTo: string
 }
 
-export default function WordBook({ words, dueCount, onRemove, onReview }: WordBookProps) {
+export default function WordBook({ words, dueCount, onRemove, reviewTo }: WordBookProps) {
   return (
     <section className="panel words">
       <header className="panel__header">
@@ -21,9 +22,9 @@ export default function WordBook({ words, dueCount, onRemove, onReview }: WordBo
           <p>
             {dueCount} {dueCount === 1 ? 'word is' : 'words are'} ready for a quick review.
           </p>
-          <button type="button" className="btn btn--primary" onClick={onReview}>
+          <Link to={reviewTo} className="btn btn--primary">
             Review now
-          </button>
+          </Link>
         </div>
       ) : null}
 
