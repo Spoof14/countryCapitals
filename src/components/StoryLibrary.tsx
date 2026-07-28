@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { CEFRLevel, ProgressState, Story } from '../types'
+import { storyCategories, storyMatchesCategory, type StoryCategory } from '../lib/storyCategories'
 
 type StoryLibraryProps = {
   stories: Story[]
@@ -14,6 +15,7 @@ const levelLabel: Record<CEFRLevel, string> = {
 }
 
 export default function StoryLibrary({ stories, progress, onOpen }: StoryLibraryProps) {
+  const [categoryFilter, setCategoryFilter] = useState<StoryCategory>('all')
   const [levelFilter, setLevelFilter] = useState<CEFRLevel | 'all'>('all')
   const [query, setQuery] = useState('')
 
@@ -21,6 +23,7 @@ export default function StoryLibrary({ stories, progress, onOpen }: StoryLibrary
   const trimmedQuery = query.trim().toLowerCase()
 
   const visibleStories = stories.filter((story) => {
+    if (!storyMatchesCategory(story.theme, categoryFilter)) return false
     if (levelFilter !== 'all' && story.level !== levelFilter) return false
     if (!trimmedQuery) return true
     return [story.titleKo, story.titleEn, story.summary, story.theme]
@@ -47,31 +50,51 @@ export default function StoryLibrary({ stories, progress, onOpen }: StoryLibrary
           onChange={(event) => setQuery(event.target.value)}
           aria-label="Search stories"
         />
-        {levels.length > 1 ? (
+
+        <div className="library__filter-group">
+          <p className="library__filter-label">Category</p>
           <div className="library__filters">
-            <button
-              type="button"
-              className={`btn btn--chip ${levelFilter === 'all' ? 'is-active' : ''}`}
-              onClick={() => setLevelFilter('all')}
-            >
-              All levels
-            </button>
-            {levels.map((level) => (
+            {storyCategories.map((category) => (
               <button
-                key={level}
+                key={category.id}
                 type="button"
-                className={`btn btn--chip ${levelFilter === level ? 'is-active' : ''}`}
-                onClick={() => setLevelFilter(level)}
+                className={`btn btn--chip ${categoryFilter === category.id ? 'is-active' : ''}`}
+                onClick={() => setCategoryFilter(category.id)}
               >
-                {level} · {levelLabel[level]}
+                {category.label}
               </button>
             ))}
+          </div>
+        </div>
+
+        {levels.length > 1 ? (
+          <div className="library__filter-group">
+            <p className="library__filter-label">Level</p>
+            <div className="library__filters">
+              <button
+                type="button"
+                className={`btn btn--chip ${levelFilter === 'all' ? 'is-active' : ''}`}
+                onClick={() => setLevelFilter('all')}
+              >
+                All levels
+              </button>
+              {levels.map((level) => (
+                <button
+                  key={level}
+                  type="button"
+                  className={`btn btn--chip ${levelFilter === level ? 'is-active' : ''}`}
+                  onClick={() => setLevelFilter(level)}
+                >
+                  {level} · {levelLabel[level]}
+                </button>
+              ))}
+            </div>
           </div>
         ) : null}
       </div>
 
       {visibleStories.length === 0 ? (
-        <p className="empty">No stories match your search.</p>
+        <p className="empty">No stories match your filters.</p>
       ) : (
         <ul className="story-list">
           {visibleStories.map((story) => {
