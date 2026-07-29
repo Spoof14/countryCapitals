@@ -1,6 +1,7 @@
 import { Link, Outlet, useRouterState } from '@tanstack/react-router'
 import { useLearner } from '../context/LearnerContext'
 import { usePremium } from '../context/PremiumContext'
+import LegalFooter from './LegalFooter'
 
 function navClass(active: boolean) {
   return `topbar__nav-link${active ? ' is-active' : ''}`
@@ -43,7 +44,10 @@ export default function Shell({ children }: { children?: React.ReactNode }) {
           </nav>
         </header>
       ) : null}
-      <main className="main">{children ?? <Outlet />}</main>
+      <main className="main">
+        {children ?? <Outlet />}
+        {!hideChrome ? <LegalFooter /> : null}
+      </main>
     </div>
   )
 }

@@ -9,6 +9,7 @@ import {
 import HangulPrimer from './components/HangulPrimer'
 import Landing from './components/Landing'
 import Paywall from './components/Paywall'
+import PrivacyPolicy from './components/PrivacyPolicy'
 import ProgressPanel from './components/ProgressPanel'
 import Shell from './components/Shell'
 import StoryLibrary from './components/StoryLibrary'
@@ -34,12 +35,13 @@ function RootLayout() {
 
 function HomePage() {
   const { progress } = useLearner()
-  return (
-    <Landing
-      onBrowse="/library"
-      continueStoryId={progress.lastReadStoryId ?? undefined}
-    />
-  )
+  const { canAccessStory } = usePremium()
+  const continueStoryId =
+    progress.lastReadStoryId && canAccessStory(progress.lastReadStoryId)
+      ? progress.lastReadStoryId
+      : undefined
+
+  return <Landing onBrowse="/library" continueStoryId={continueStoryId} />
 }
 
 function LibraryPage() {
@@ -88,6 +90,10 @@ function StoryPage({ storyId }: { storyId: string }) {
 
 function UpgradePage() {
   return <Paywall />
+}
+
+function PrivacyPage() {
+  return <PrivacyPolicy />
 }
 
 function WordsPage() {
@@ -172,6 +178,12 @@ const upgradeRoute = createRoute({
   component: UpgradePage,
 })
 
+const privacyRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/privacy',
+  component: PrivacyPage,
+})
+
 const progressRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/progress',
@@ -197,6 +209,7 @@ const routeTree = rootRoute.addChildren([
   reviewRoute,
   hangulRoute,
   upgradeRoute,
+  privacyRoute,
   progressRoute,
   ...legacyRoutes,
 ])

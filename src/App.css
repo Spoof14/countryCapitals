@@ -1191,6 +1191,61 @@
   border-top: 1px solid var(--line);
 }
 
+.paywall__legal {
+  margin: 1.25rem 0 0;
+  font-size: 0.88rem;
+}
+
+.paywall__legal a {
+  color: var(--ink-soft);
+}
+
+.legal__body {
+  display: grid;
+  gap: 0.85rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+.legal__body h3 {
+  margin: 1rem 0 0;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+}
+
+.legal__body ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.legal__body a {
+  color: var(--celadon-deep);
+}
+
+.legal__footer {
+  margin-top: 2rem;
+}
+
+.legal-footer {
+  margin-top: 2.5rem;
+  padding: 1rem 0 0.5rem;
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+
+.legal-footer__link {
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+
+.legal-footer__link:hover {
+  color: var(--ink);
+}
+
 .reader__cover {
   width: 100%;
   aspect-ratio: 16 / 7;

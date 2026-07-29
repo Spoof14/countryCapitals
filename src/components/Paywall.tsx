@@ -91,6 +91,10 @@ export default function Paywall({ storyId }: PaywallProps) {
           unlock, works offline.
         </p>
       ) : null}
+
+      <p className="paywall__legal">
+        <Link to="/privacy">Privacy policy</Link>
+      </p>
     </section>
   )
 }
