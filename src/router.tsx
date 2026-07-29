@@ -8,6 +8,8 @@ import {
 } from '@tanstack/react-router'
 import HangulPrimer from './components/HangulPrimer'
 import Landing from './components/Landing'
+import Paywall from './components/Paywall'
+import PrivacyPolicy from './components/PrivacyPolicy'
 import ProgressPanel from './components/ProgressPanel'
 import Shell from './components/Shell'
 import StoryLibrary from './components/StoryLibrary'
@@ -15,26 +17,31 @@ import StoryReader from './components/StoryReader'
 import WordBook from './components/WordBook'
 import WordReview from './components/WordReview'
 import { LearnerProvider, useLearner } from './context/LearnerContext'
+import { PremiumProvider, usePremium } from './context/PremiumContext'
 import { stories, getStoryById } from './data/stories'
+import { canAccessStory } from './lib/storyAccess'
 
 function RootLayout() {
   return (
-    <LearnerProvider>
-      <Shell>
-        <Outlet />
-      </Shell>
-    </LearnerProvider>
+    <PremiumProvider>
+      <LearnerProvider>
+        <Shell>
+          <Outlet />
+        </Shell>
+      </LearnerProvider>
+    </PremiumProvider>
   )
 }
 
 function HomePage() {
   const { progress } = useLearner()
-  return (
-    <Landing
-      onBrowse="/library"
-      continueStoryId={progress.lastReadStoryId ?? undefined}
-    />
-  )
+  const { canAccessStory } = usePremium()
+  const continueStoryId =
+    progress.lastReadStoryId && canAccessStory(progress.lastReadStoryId)
+      ? progress.lastReadStoryId
+      : undefined
+
+  return <Landing onBrowse="/library" continueStoryId={continueStoryId} />
 }
 
 function LibraryPage() {
@@ -52,6 +59,7 @@ function LibraryPage() {
 
 function StoryPage({ storyId }: { storyId: string }) {
   const { words, saveWord, markStoryCompleted } = useLearner()
+  const { isPremium, isLoading: premiumLoading } = usePremium()
   const story = getStoryById(storyId)
   const savedWordKeys = new Set(words.map((word) => word.ko))
 
@@ -66,6 +74,10 @@ function StoryPage({ storyId }: { storyId: string }) {
     )
   }
 
+  if (!premiumLoading && !canAccessStory(storyId, isPremium)) {
+    return <Paywall storyId={storyId} />
+  }
+
   return (
     <StoryReader
       story={story}
@@ -74,6 +86,14 @@ function StoryPage({ storyId }: { storyId: string }) {
       onSaveWord={(word) => saveWord(word, story.id)}
     />
   )
+}
+
+function UpgradePage() {
+  return <Paywall />
+}
+
+function PrivacyPage() {
+  return <PrivacyPolicy />
 }
 
 function WordsPage() {
@@ -152,6 +172,18 @@ const hangulRoute = createRoute({
   component: HangulPrimer,
 })
 
+const upgradeRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/upgrade',
+  component: UpgradePage,
+})
+
+const privacyRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/privacy',
+  component: PrivacyPage,
+})
+
 const progressRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/progress',
@@ -176,6 +208,8 @@ const routeTree = rootRoute.addChildren([
   wordsRoute,
   reviewRoute,
   hangulRoute,
+  upgradeRoute,
+  privacyRoute,
   progressRoute,
   ...legacyRoutes,
 ])

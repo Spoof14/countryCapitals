@@ -1,5 +1,6 @@
-import { useNavigate } from '@tanstack/react-router'
+import { Link, useNavigate } from '@tanstack/react-router'
 import { useState } from 'react'
+import { usePremium } from '../context/PremiumContext'
 import type { CEFRLevel, ProgressState, Story } from '../types'
 import { storyCategories, storyMatchesCategory, type StoryCategory } from '../lib/storyCategories'
 
@@ -17,6 +18,7 @@ const levelLabel: Record<CEFRLevel, string> = {
 
 export default function StoryLibrary({ stories, progress, onOpen }: StoryLibraryProps) {
   const navigate = useNavigate()
+  const { isPremium, canAccessStory, freeStoryCount, lockedStoryCount } = usePremium()
   const [categoryFilter, setCategoryFilter] = useState<StoryCategory>('all')
   const [levelFilter, setLevelFilter] = useState<CEFRLevel | 'all'>('all')
   const [query, setQuery] = useState('')
@@ -39,9 +41,20 @@ export default function StoryLibrary({ stories, progress, onOpen }: StoryLibrary
       <header className="panel__header">
         <h2>Stories</h2>
         <p>
-          {stories.length} stories, Korean first. English waits underneath until you ask.
+          {isPremium
+            ? `${stories.length} stories, Korean first. English waits underneath until you ask.`
+            : `${freeStoryCount} free stories · ${lockedStoryCount} more with full unlock.`}
         </p>
       </header>
+
+      {!isPremium ? (
+        <div className="library__upgrade">
+          <p>Unlock all {stories.length} stories, quizzes, and practice modes for $5 — one time.</p>
+          <Link to="/upgrade" className="btn btn--primary">
+            Unlock full library
+          </Link>
+        </div>
+      ) : null}
 
       <div className="library__controls">
         <input
@@ -101,12 +114,17 @@ export default function StoryLibrary({ stories, progress, onOpen }: StoryLibrary
         <ul className="story-list">
           {visibleStories.map((story) => {
             const done = progress.completedStoryIds.includes(story.id)
+            const locked = !canAccessStory(story.id)
             return (
               <li key={story.id}>
                 <button
                   type="button"
-                  className="story-row"
+                  className={`story-row ${locked ? 'story-row--locked' : ''}`}
                   onClick={() => {
+                    if (locked) {
+                      navigate({ to: '/upgrade' })
+                      return
+                    }
                     onOpen?.(story.id)
                     navigate({ to: '/story/$storyId', params: { storyId: story.id } })
                   }}
@@ -116,6 +134,7 @@ export default function StoryLibrary({ stories, progress, onOpen }: StoryLibrary
                       <span className="story-row__theme">{story.theme}</span>
                       <span className="story-row__level">{levelLabel[story.level]}</span>
                       <span className="story-row__time">{story.minutes} min</span>
+                      {locked ? <span className="story-row__lock">Locked</span> : null}
                       {done ? <span className="story-row__done">Read</span> : null}
                     </div>
                     <h3 className="story-row__title-ko">{story.titleKo}</h3>

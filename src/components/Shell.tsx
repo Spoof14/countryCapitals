@@ -1,5 +1,7 @@
 import { Link, Outlet, useRouterState } from '@tanstack/react-router'
 import { useLearner } from '../context/LearnerContext'
+import { usePremium } from '../context/PremiumContext'
+import LegalFooter from './LegalFooter'
 
 function navClass(active: boolean) {
   return `topbar__nav-link${active ? ' is-active' : ''}`
@@ -7,6 +9,7 @@ function navClass(active: boolean) {
 
 export default function Shell({ children }: { children?: React.ReactNode }) {
   const { dueWords } = useLearner()
+  const { isPremium } = usePremium()
   const pathname = useRouterState({ select: (state) => state.location.pathname })
   const hideChrome = pathname === '/'
   const storiesActive = pathname === '/library' || pathname.startsWith('/story/')
@@ -33,10 +36,18 @@ export default function Shell({ children }: { children?: React.ReactNode }) {
             <Link to="/progress" className={navClass(pathname === '/progress')}>
               Progress
             </Link>
+            {!isPremium ? (
+              <Link to="/upgrade" className={`${navClass(pathname === '/upgrade')} topbar__nav-link--accent`}>
+                Unlock
+              </Link>
+            ) : null}
           </nav>
         </header>
       ) : null}
-      <main className="main">{children ?? <Outlet />}</main>
+      <main className="main">
+        {children ?? <Outlet />}
+        {!hideChrome ? <LegalFooter /> : null}
+      </main>
     </div>
   )
 }
