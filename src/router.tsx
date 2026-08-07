@@ -19,17 +19,20 @@ import WordBook from './components/WordBook'
 import WordReview from './components/WordReview'
 import { LearnerProvider, useLearner } from './context/LearnerContext'
 import { PremiumProvider, usePremium } from './context/PremiumContext'
+import { SpeechSettingsProvider } from './context/SpeechSettingsContext'
 import { stories, getStoryById } from './data/stories'
 import { canAccessStory } from './lib/storyAccess'
 
 function RootLayout() {
   return (
     <PremiumProvider>
-      <LearnerProvider>
-        <Shell>
-          <Outlet />
-        </Shell>
-      </LearnerProvider>
+      <SpeechSettingsProvider>
+        <LearnerProvider>
+          <Shell>
+            <Outlet />
+          </Shell>
+        </LearnerProvider>
+      </SpeechSettingsProvider>
     </PremiumProvider>
   )
 }

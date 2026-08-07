@@ -7,6 +7,7 @@ import {
   type PhraseEntry,
 } from '../data/phrases'
 import { speakKorean } from '../lib/speech'
+import SpeechControls from './SpeechControls'
 
 type PhrasesTab = 'words' | 'phrases' | 'conversations'
 
@@ -129,6 +130,8 @@ export default function PhrasesPanel() {
           Conversations
         </button>
       </div>
+
+      <SpeechControls compact />
 
       {tab === 'words'
         ? commonWordCategories.map((category) => (

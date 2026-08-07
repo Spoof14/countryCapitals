@@ -1,5 +1,6 @@
 import { hangulSections } from '../data/hangul'
 import { speakKorean } from '../lib/speech'
+import SpeechControls from './SpeechControls'
 
 export default function HangulPrimer() {
   return (
@@ -12,6 +13,8 @@ export default function HangulPrimer() {
           they mean.
         </p>
       </header>
+
+      <SpeechControls compact />
 
       {hangulSections.map((section) => (
         <div key={section.title} className="hangul__section">
