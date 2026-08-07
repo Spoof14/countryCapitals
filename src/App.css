@@ -1317,6 +1317,210 @@
   font-size: 0.9rem;
 }
 
+.phrases__tabs {
+  margin-top: 0.5rem;
+}
+
+.phrases__section {
+  margin-top: 1.8rem;
+}
+
+.phrases__section h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+}
+
+.phrases__description {
+  margin-top: 0.3rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.phrases__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.55rem;
+  margin-top: 0.9rem;
+}
+
+.phrases__card {
+  display: grid;
+  gap: 0.15rem;
+  justify-items: start;
+  text-align: left;
+  padding: 0.85rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  transition: background 150ms ease, border-color 150ms ease, transform 150ms ease;
+}
+
+.phrases__card:hover {
+  transform: translateY(-1px);
+  border-color: var(--celadon);
+  background: rgba(79, 138, 116, 0.1);
+}
+
+.phrases__list {
+  list-style: none;
+  margin: 0.9rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.phrases__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  text-align: left;
+  transition: background 150ms ease, border-color 150ms ease;
+}
+
+.phrases__row:hover {
+  border-color: var(--celadon);
+  background: rgba(79, 138, 116, 0.08);
+}
+
+.phrases__ko {
+  font-family: var(--font-ko);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--celadon-deep);
+}
+
+.phrases__rom {
+  margin-top: 0.1rem;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.phrases__en {
+  margin-top: 0.15rem;
+  font-size: 0.92rem;
+  color: var(--ink);
+}
+
+.phrases__hear {
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  color: var(--celadon-deep);
+  font-weight: 600;
+}
+
+.phrases__conversation {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.phrases__conversation + .phrases__conversation {
+  margin-top: 0.75rem;
+}
+
+.phrases__conversation-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem 1.1rem;
+  text-align: left;
+  background: transparent;
+}
+
+.phrases__conversation-toggle h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+}
+
+.phrases__conversation-toggle p {
+  margin-top: 0.25rem;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
+
+.phrases__conversation-chevron {
+  flex-shrink: 0;
+  width: 1.75rem;
+  height: 1.75rem;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(79, 138, 116, 0.12);
+  color: var(--celadon-deep);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.phrases__dialogue {
+  padding: 0 1rem 1rem;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.phrases__bubble {
+  display: grid;
+  gap: 0.2rem;
+  max-width: 92%;
+}
+
+.phrases__bubble--you {
+  justify-self: end;
+}
+
+.phrases__bubble--you .phrases__bubble-text {
+  background: rgba(79, 138, 116, 0.14);
+  border-color: rgba(79, 138, 116, 0.35);
+}
+
+.phrases__speaker {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+}
+
+.phrases__bubble--you .phrases__speaker {
+  text-align: right;
+}
+
+.phrases__bubble-text {
+  display: grid;
+  gap: 0.1rem;
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--paper);
+  text-align: left;
+  transition: border-color 150ms ease, background 150ms ease;
+}
+
+.phrases__bubble-text:hover {
+  border-color: var(--celadon);
+  background: rgba(79, 138, 116, 0.08);
+}
+
+.phrases__play-all {
+  justify-self: start;
+  margin-top: 0.35rem;
+}
+
+.phrases__footnote {
+  margin-top: 2rem;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
 @keyframes rise-in {
   from {
     opacity: 0;

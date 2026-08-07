@@ -7,6 +7,7 @@ import {
   redirect,
 } from '@tanstack/react-router'
 import HangulPrimer from './components/HangulPrimer'
+import PhrasesPanel from './components/PhrasesPanel'
 import Landing from './components/Landing'
 import Paywall from './components/Paywall'
 import PrivacyPolicy from './components/PrivacyPolicy'
@@ -172,6 +173,12 @@ const hangulRoute = createRoute({
   component: HangulPrimer,
 })
 
+const phrasesRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/phrases',
+  component: PhrasesPanel,
+})
+
 const upgradeRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/upgrade',
@@ -208,6 +215,7 @@ const routeTree = rootRoute.addChildren([
   wordsRoute,
   reviewRoute,
   hangulRoute,
+  phrasesRoute,
   upgradeRoute,
   privacyRoute,
   progressRoute,

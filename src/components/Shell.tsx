@@ -33,6 +33,9 @@ export default function Shell({ children }: { children?: React.ReactNode }) {
             <Link to="/hangul" className={navClass(pathname === '/hangul')}>
               Hangul
             </Link>
+            <Link to="/phrases" className={navClass(pathname === '/phrases')}>
+              Phrases
+            </Link>
             <Link to="/progress" className={navClass(pathname === '/progress')}>
               Progress
             </Link>
