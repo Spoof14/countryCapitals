@@ -7,6 +7,7 @@ import {
   redirect,
 } from '@tanstack/react-router'
 import HangulPrimer from './components/HangulPrimer'
+import PhrasesPanel from './components/PhrasesPanel'
 import Landing from './components/Landing'
 import Paywall from './components/Paywall'
 import PrivacyPolicy from './components/PrivacyPolicy'
@@ -18,17 +19,20 @@ import WordBook from './components/WordBook'
 import WordReview from './components/WordReview'
 import { LearnerProvider, useLearner } from './context/LearnerContext'
 import { PremiumProvider, usePremium } from './context/PremiumContext'
+import { SpeechSettingsProvider } from './context/SpeechSettingsContext'
 import { stories, getStoryById } from './data/stories'
 import { canAccessStory } from './lib/storyAccess'
 
 function RootLayout() {
   return (
     <PremiumProvider>
-      <LearnerProvider>
-        <Shell>
-          <Outlet />
-        </Shell>
-      </LearnerProvider>
+      <SpeechSettingsProvider>
+        <LearnerProvider>
+          <Shell>
+            <Outlet />
+          </Shell>
+        </LearnerProvider>
+      </SpeechSettingsProvider>
     </PremiumProvider>
   )
 }
@@ -172,6 +176,12 @@ const hangulRoute = createRoute({
   component: HangulPrimer,
 })
 
+const phrasesRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/phrases',
+  component: PhrasesPanel,
+})
+
 const upgradeRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/upgrade',
@@ -208,6 +218,7 @@ const routeTree = rootRoute.addChildren([
   wordsRoute,
   reviewRoute,
   hangulRoute,
+  phrasesRoute,
   upgradeRoute,
   privacyRoute,
   progressRoute,

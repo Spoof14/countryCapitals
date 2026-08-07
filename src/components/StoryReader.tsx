@@ -2,8 +2,18 @@ import { useCanGoBack, useNavigate, useRouter } from '@tanstack/react-router'
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import type { Story, StoryWord } from '../types'
-import { createKoreanUtterance, speakKorean, stopSpeaking } from '../lib/speech'
+import {
+  beginPlaybackSession,
+  getActiveSpeechSettings,
+  getSpeechWordGapMs,
+  isPlaybackCancelled,
+  speakAndWait,
+  speakKorean,
+  stopSpeaking,
+  tokenizeKorean,
+} from '../lib/speech'
 import SentenceBuilder from './SentenceBuilder'
+import SpeechControls from './SpeechControls'
 import StoryQuiz from './StoryQuiz'
 import WordCloze from './WordCloze'
 import WordMatch from './WordMatch'
@@ -31,9 +41,9 @@ export default function StoryReader({
 
   // Which paragraph is currently being read aloud (null when silent).
   const [speakingIndex, setSpeakingIndex] = useState<number | null>(null)
-  // Utterances must stay referenced or some browsers drop their events;
-  // the session counter invalidates callbacks from cancelled playback.
-  const utterancesRef = useRef<SpeechSynthesisUtterance[]>([])
+  // Which word within the paragraph is being read (word-by-word mode).
+  const [speakingWordIndex, setSpeakingWordIndex] = useState<number | null>(null)
+  // The session counter invalidates callbacks from cancelled playback.
   const sessionRef = useRef(0)
   const passageRefs = useRef<Array<HTMLDivElement | null>>([])
   const router = useRouter()
@@ -59,31 +69,57 @@ export default function StoryReader({
   }, [speakingIndex])
 
   const stopPlayback = () => {
-    sessionRef.current += 1
-    utterancesRef.current = []
-    stopSpeaking()
+    sessionRef.current = beginPlaybackSession()
     setSpeakingIndex(null)
+    setSpeakingWordIndex(null)
   }
 
-  const playParagraphs = (startIndex: number, endIndex?: number) => {
+  const playParagraphs = async (startIndex: number, endIndex?: number) => {
     if (typeof window === 'undefined' || !window.speechSynthesis) return
-    stopPlayback()
-    const session = sessionRef.current
-    const paragraphs = story.paragraphs.slice(startIndex, endIndex ?? story.paragraphs.length)
-    const lastIndex = startIndex + paragraphs.length - 1
 
-    paragraphs.forEach((paragraph, offset) => {
+    const session = beginPlaybackSession()
+    sessionRef.current = session
+    setSpeakingWordIndex(null)
+
+    const paragraphs = story.paragraphs.slice(startIndex, endIndex ?? story.paragraphs.length)
+    const { mode } = getActiveSpeechSettings()
+    const wordGapMs = getSpeechWordGapMs()
+
+    for (let offset = 0; offset < paragraphs.length; offset += 1) {
+      if (isPlaybackCancelled(session)) return
+
       const index = startIndex + offset
-      const utterance = createKoreanUtterance(paragraph.ko)
-      utterance.onstart = () => {
-        if (sessionRef.current === session) setSpeakingIndex(index)
+      const paragraph = paragraphs[offset]
+      setSpeakingIndex(index)
+
+      if (mode === 'sentence') {
+        await speakAndWait(paragraph.ko)
+        if (isPlaybackCancelled(session)) return
+        continue
       }
-      utterance.onend = () => {
-        if (sessionRef.current === session && index === lastIndex) setSpeakingIndex(null)
+
+      const tokens = tokenizeKorean(paragraph.ko)
+      for (let wordIndex = 0; wordIndex < tokens.length; wordIndex += 1) {
+        if (isPlaybackCancelled(session)) return
+
+        setSpeakingWordIndex(wordIndex)
+        await speakAndWait(tokens[wordIndex])
+        if (isPlaybackCancelled(session)) return
+
+        if (wordIndex < tokens.length - 1) {
+          await new Promise<void>((resolve) => {
+            window.setTimeout(() => resolve(), wordGapMs)
+          })
+        }
       }
-      utterancesRef.current.push(utterance)
-      window.speechSynthesis.speak(utterance)
-    })
+
+      setSpeakingWordIndex(null)
+    }
+
+    if (!isPlaybackCancelled(session)) {
+      setSpeakingIndex(null)
+      setSpeakingWordIndex(null)
+    }
   }
 
   const allWords = useMemo(() => {
@@ -135,6 +171,8 @@ export default function StoryReader({
           </button>
         </div>
       </header>
+
+      <SpeechControls compact />
 
       <div className="reader__title">
         <p className="reader__theme">
@@ -189,9 +227,11 @@ export default function StoryReader({
               ) : null}
               <div className="passage__row">
                 <p className="passage__ko">
-                  {renderKoreanWithWords(paragraph.ko, paragraph.words, (word) => {
-                    setActiveWord(word)
-                  })}
+                  {speaking && speakingWordIndex !== null
+                    ? renderKoreanTokens(paragraph.ko, speakingWordIndex)
+                    : renderKoreanWithWords(paragraph.ko, paragraph.words, (word) => {
+                        setActiveWord(word)
+                      })}
                 </p>
                 <button
                   type="button"
@@ -338,6 +378,19 @@ export default function StoryReader({
         : null}
     </section>
   )
+}
+
+function renderKoreanTokens(text: string, speakingWordIndex: number) {
+  const tokens = tokenizeKorean(text)
+
+  return tokens.map((token, index) => (
+    <span key={`${token}-${index}`}>
+      <span className={speakingWordIndex === index ? 'passage__word is-speaking' : 'passage__word'}>
+        {token}
+      </span>
+      {index < tokens.length - 1 ? ' ' : null}
+    </span>
+  ))
 }
 
 function renderKoreanWithWords(

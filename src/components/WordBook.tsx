@@ -1,6 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import type { SavedWord } from '../types'
 import { speakKorean } from '../lib/speech'
+import SpeechControls from './SpeechControls'
 
 type WordBookProps = {
   words: SavedWord[]
@@ -16,6 +17,8 @@ export default function WordBook({ words, dueCount, onRemove, reviewTo }: WordBo
         <h2>Word notebook</h2>
         <p>Words you saved while reading. Review a little, often.</p>
       </header>
+
+      <SpeechControls compact />
 
       {dueCount > 0 ? (
         <div className="words__due">
